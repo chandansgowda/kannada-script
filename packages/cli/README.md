@@ -1,8 +1,8 @@
 <h1 align="center">Kannada Script</h1>
 <p align="center">
-<a href="https://lgtm.com/projects/g/DulLabs/kannada-script/alerts/"><img alt="Total alerts" src="https://img.shields.io/lgtm/alerts/g/DulLabs/kannada-script.svg?logo=lgtm&logoWidth=18"/></a>
-<a href="https://lgtm.com/projects/g/DulLabs/kannada-script/context:javascript"><img alt="Language grade: JavaScript" src="https://img.shields.io/lgtm/grade/javascript/g/DulLabs/kannada-script.svg?logo=lgtm&logoWidth=18"/></a>
-<a href="https://github.com/DulLabs/kannada-script/actions/workflows/node.js.yml/badge.svg"><img alt="Build" src="https://github.com/DulLabs/kannada-script/actions/workflows/node.js.yml/badge.svg"/></a>
+<a href="https://lgtm.com/projects/g/chandansgowda/kannada-script/alerts/"><img alt="Total alerts" src="https://img.shields.io/lgtm/alerts/g/chandansgowda/kannada-script.svg?logo=lgtm&logoWidth=18"/></a>
+<a href="https://lgtm.com/projects/g/chandansgowda/kannada-script/context:javascript"><img alt="Language grade: JavaScript" src="https://img.shields.io/lgtm/grade/javascript/g/chandansgowda/kannada-script.svg?logo=lgtm&logoWidth=18"/></a>
+<a href="https://github.com/chandansgowda/kannada-script/actions/workflows/node.js.yml/badge.svg"><img alt="Build" src="https://github.com/chandansgowda/kannada-script/actions/workflows/node.js.yml/badge.svg"/></a>
 <a href="https://kannadascript.js.org/"><img alt="Build" src="https://img.shields.io/badge/website-kannadascript.js.org-orange"/></a>
 <a href="https://www.npmjs.com/package/kannadascript"><img alt="Build" src="https://img.shields.io/badge/npm-kannadascript-orange"/></a>
 
@@ -21,7 +21,6 @@ npm i -g kannadascript
 <h2 align="center">Usage</h2>
 
 <h4 align="left">Create a new file</h4><br/>
-
 
 <h4 align="left">Edit the file with a text editor.
 You can also try out your code on <a href="https://kannadascript.js.org/#playground">Kannada Script PlayGround</a></h4>
@@ -44,8 +43,6 @@ kannadascript test.kans
 ```
 hello anna
 ```
-
-
 
 <h2 align="center">Documentation</h2>
 
@@ -128,7 +125,6 @@ matte sigona
 <h3 align="center">Loops</h3>
 <p align="center">Statements inside <code>ellivargu</code> blocks are executed as long as a specified condition evaluates to sari. If the condition becomes <code>thappu</code>, statement within the loop stops executing and control passes to the statement following the loop. Use <code>saaku nilsu</code> to break the loop and <code className="language-cpp">munde nodu</code> to continue within loop.</p>
 
-
 ```
 
 namaskara
@@ -147,6 +143,3 @@ namaskara
   helu "done";
 matte sigona
 ```
-
-
-

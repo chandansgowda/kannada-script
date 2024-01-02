@@ -14,7 +14,7 @@ console.info(
 ██████╦╝██║░░██║██║░░██║██║███████╗██║░░██║██║░╚███║╚██████╔╝
 ╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝╚══════╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░
 
-https://github.com/DulLabs/kannada-script
+https://github.com/chandansgowda/kannada-script
 `)
 );
 

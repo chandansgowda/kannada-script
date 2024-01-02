@@ -44,7 +44,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/DulLabs/kannada-script/blob/develop/README.md)
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/chandansgowda/kannada-script/blob/develop/README.md)
       options:
-        - label: I follow [Contributing Guidelines](https://github.com/DulLabs/kannada-script/blob/develop/README.md) & [Code of conduct](https://github.com/DulLabs/kannada-script/blob/develop/README.md) of kannada-script.
+        - label: I follow [Contributing Guidelines](https://github.com/chandansgowda/kannada-script/blob/develop/README.md) & [Code of conduct](https://github.com/chandansgowda/kannada-script/blob/develop/README.md) of kannada-script.
           required: true

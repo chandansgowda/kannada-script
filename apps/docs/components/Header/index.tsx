@@ -1,6 +1,5 @@
 import kannadascriptLogo from "./kannadascriptLogo";
 
-
 export default function Header() {
   return (
     <div className="relative overflow-hidden header flex justify-center items-center">
@@ -32,7 +31,7 @@ export default function Header() {
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://github.com/DulLabs/kannada-script"
+                    href="https://github.com/chandansgowda/kannada-script"
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-bhagwa-700 bg-bhagwa-300 hover:bg-bhagwa-400 md:py-4 md:text-lg md:px-10"
                   >
                     View Source
