@@ -1,14 +1,8 @@
 <h1 align="center">Kannada Script</h1>
-<p align="center">
-<a href="https://lgtm.com/projects/g/chandansgowda/kannada-script/alerts/"><img alt="Total alerts" src="https://img.shields.io/lgtm/alerts/g/chandansgowda/kannada-script.svg?logo=lgtm&logoWidth=18"/></a>
-<a href="https://lgtm.com/projects/g/chandansgowda/kannada-script/context:javascript"><img alt="Language grade: JavaScript" src="https://img.shields.io/lgtm/grade/javascript/g/chandansgowda/kannada-script.svg?logo=lgtm&logoWidth=18"/></a>
-<a href="https://github.com/chandansgowda/kannada-script/actions/workflows/node.js.yml/badge.svg"><img alt="Build" src="https://github.com/chandansgowda/kannada-script/actions/workflows/node.js.yml/badge.svg"/></a>
-<a href="https://kannadascript.js.org/"><img alt="Build" src="https://img.shields.io/badge/website-kannadascript.js.org-orange"/></a>
-<a href="https://www.npmjs.com/package/kannadascript"><img alt="Build" src="https://img.shields.io/badge/npm-kannadascript-orange"/></a>
 
 </p>
 <p align="center">
-  This is official repository for kannada-script.<br><br>
+  This is official repository for kannada-script (Forked from Bhai-lang)<br><br>
   <b>Kannada Script is a toy programming language written in Typescript.</b>
 </p>
 <br>
