@@ -1,5 +1,5 @@
-import { TokenTypes } from "../../constants/kannadascriptSpec";
-import kannadascriptModule from "../../module/kannadascriptModule";
+import { TokenTypes } from "../../constants/bhaiLangSpec";
+import bhaiLangModule from "../../module/bhaiLangModule";
 
 import Statement from "./statement";
 import TokenExecutor from "./tokenExecutor";
@@ -20,7 +20,7 @@ export default class StatementList {
       this._tokenExecutor.eatTokenAndForwardLookahead(lookahead.type);
     }
 
-    return kannadascriptModule.getInitStatement().getStatement();
+    return bhaiLangModule.getInitStatement().getStatement();
   }
 
   getStatementList(stopLookaheadType: string) {

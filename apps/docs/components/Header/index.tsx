@@ -1,4 +1,4 @@
-import kannadascriptLogo from "./kannadascriptLogo";
+import BhaiLangLogo from "./bhaiLangLogo";
 
 export default function Header() {
   return (
@@ -9,7 +9,7 @@ export default function Header() {
             <div className="sm:text-center lg:text-left">
               <h1 className="hidden">kannadascript</h1>
               <div className="p-4">
-                <kannadascriptLogo />
+                <BhaiLangLogo />
               </div>
               <p className="mt-3 text-center text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                 A toy programming language written in Typescript

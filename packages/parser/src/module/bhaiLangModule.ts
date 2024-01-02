@@ -2,53 +2,35 @@ import { Parser } from "../components/parser";
 import Program from "../components/parser/program";
 import BlockStatement from "../components/parser/statement/blockStatement";
 import BreakStatement from "../components/parser/statement/breakStatement";
-import ContinueStatement
-  from "../components/parser/statement/continueStatement";
+import ContinueStatement from "../components/parser/statement/continueStatement";
 import EmptyStatement from "../components/parser/statement/emptyStatement";
-import AdditiveExpression
-  from "../components/parser/statement/expression/addititveExpression";
-import AssignmentExpression
-  from "../components/parser/statement/expression/assignmentExpression";
-import EqualityExpression
-  from "../components/parser/statement/expression/equalityExpression";
-import IdentifierExpression
-  from "../components/parser/statement/expression/identifierExpression";
-import BooleanLiteral
-  from "../components/parser/statement/expression/literals/booleanLiteral";
-import NullLiteral
-  from "../components/parser/statement/expression/literals/nullLiteral";
-import NumericLiteral
-  from "../components/parser/statement/expression/literals/numericLiteral";
-import StringLiteral
-  from "../components/parser/statement/expression/literals/stringLiteral";
-import LogicalANDExpression
-  from "../components/parser/statement/expression/logicalANDExpression";
-import LogicalORExpression
-  from "../components/parser/statement/expression/logicalORExpression";
-import MultiplicativeExpression
-  from "../components/parser/statement/expression/multiplicativeExpression";
-import ParanthesizedExpression
-  from "../components/parser/statement/expression/paranthesizedExpression";
-import PrimaryExpression
-  from "../components/parser/statement/expression/primaryExpression";
-import RelationalExpression
-  from "../components/parser/statement/expression/relationalExpression";
-import ExpressionStatement
-  from "../components/parser/statement/expressionStatement";
+import AdditiveExpression from "../components/parser/statement/expression/addititveExpression";
+import AssignmentExpression from "../components/parser/statement/expression/assignmentExpression";
+import EqualityExpression from "../components/parser/statement/expression/equalityExpression";
+import IdentifierExpression from "../components/parser/statement/expression/identifierExpression";
+import BooleanLiteral from "../components/parser/statement/expression/literals/booleanLiteral";
+import NullLiteral from "../components/parser/statement/expression/literals/nullLiteral";
+import NumericLiteral from "../components/parser/statement/expression/literals/numericLiteral";
+import StringLiteral from "../components/parser/statement/expression/literals/stringLiteral";
+import LogicalANDExpression from "../components/parser/statement/expression/logicalANDExpression";
+import LogicalORExpression from "../components/parser/statement/expression/logicalORExpression";
+import MultiplicativeExpression from "../components/parser/statement/expression/multiplicativeExpression";
+import ParanthesizedExpression from "../components/parser/statement/expression/paranthesizedExpression";
+import PrimaryExpression from "../components/parser/statement/expression/primaryExpression";
+import RelationalExpression from "../components/parser/statement/expression/relationalExpression";
+import ExpressionStatement from "../components/parser/statement/expressionStatement";
 import IfStatement from "../components/parser/statement/ifStatement";
 import InitStatement from "../components/parser/statement/initStatement";
 import PrintStatement from "../components/parser/statement/printStatement";
-import VariableStatement
-  from "../components/parser/statement/variableStatement";
+import VariableStatement from "../components/parser/statement/variableStatement";
 import WhileStatement from "../components/parser/statement/whileStatement";
 import StatementList from "../components/parser/statementList";
 import TokenExecutor from "../components/parser/tokenExecutor";
 import TokenizerImpl from "../components/tokenizer";
 import { Tokenizer } from "../components/tokenizer/types";
-import { SPEC } from "../constants/kannadascriptSpec";
+import { SPEC } from "../constants/bhaiLangSpec";
 
-
-export default class kannadascriptModule {
+export default class bhaiLangModule {
   private static _tokenizer?: Tokenizer;
   private static _initStatement?: InitStatement;
   private static _parser?: Parser;
@@ -134,7 +116,7 @@ export default class kannadascriptModule {
   }
 
   static getContinueStatement() {
-    if(!this._continueStatement){
+    if (!this._continueStatement) {
       this._continueStatement = new ContinueStatement(this.getTokenExecutor());
     }
 

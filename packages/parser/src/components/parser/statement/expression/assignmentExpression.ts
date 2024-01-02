@@ -1,9 +1,8 @@
 import Expression from ".";
 
-import { TokenTypes } from "../../../../constants/kannadascriptSpec";
+import { TokenTypes } from "../../../../constants/bhaiLangSpec";
 import { NodeType } from "../../../../constants/constants";
 import { ASTNode } from "../../types/nodeTypes";
-
 
 export default class AssignmentExpression extends Expression {
   private _logicalORExpression = Expression.getExpressionImpl(

@@ -1,6 +1,6 @@
 import TokenExecutor from "../../src/components/parser/tokenExecutor";
 import TokenizerImpl from "../../src/components/tokenizer";
-import { TokenTypes } from "../../src/constants/kannadascriptSpec";
+import { TokenTypes } from "../../src/constants/bhaiLangSpec";
 
 const tokenizerMock = new (<any>TokenizerImpl)() as jest.Mocked<TokenizerImpl>;
 

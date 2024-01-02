@@ -2,11 +2,10 @@ import Visitor from ".";
 import { ASTNode } from "kannada-script-parser";
 
 import InvalidStateException from "../../exceptions/invalidStateException";
-import khaliPointerException from "../../exceptions/khaliPointerException";
+import nallaPointerException from "../../exceptions/nallaPointerException";
 import RuntimeException from "../../exceptions/runtimeException";
 import { getOperationValue } from "../../helpers";
 import InterpreterModule from "../../module/interpreterModule";
-
 
 export default class AssignmentExpression implements Visitor {
   visitNode(node: ASTNode) {
@@ -29,7 +28,7 @@ export default class AssignmentExpression implements Visitor {
       const left = currentScope.get(identifier);
 
       if (left === null && node.operator !== "=")
-        throw new khaliPointerException(
+        throw new nallaPointerException(
           `khali operand ni jamta "${node.operator}" ke sath`
         );
 

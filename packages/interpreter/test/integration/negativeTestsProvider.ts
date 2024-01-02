@@ -1,6 +1,5 @@
 import { RuntimeException } from "../../src";
-import khaliPointerException from "../../src/exceptions/khaliPointerException";
-
+import nallaPointerException from "../../src/exceptions/nallaPointerException";
 
 export const NegativeTestCases = [
   {
@@ -186,7 +185,7 @@ export const NegativeTestCases = [
       helu a + 9;
       matte sigona;
     `,
-    exception: khaliPointerException,
+    exception: nallaPointerException,
   },
   {
     name: "interpreter use khali variable in expression - 2, should throw an exception",
@@ -196,7 +195,7 @@ export const NegativeTestCases = [
       helu a + 9;
       matte sigona;
     `,
-    exception: khaliPointerException,
+    exception: nallaPointerException,
   },
   {
     name: "interpreter use khali in variable initialisation expression, should throw an exception",
@@ -205,7 +204,7 @@ export const NegativeTestCases = [
       idu a = khali + 80;
       matte sigona;
     `,
-    exception: khaliPointerException,
+    exception: nallaPointerException,
   },
   {
     name: "interpreter use khali in variable initialisation expression - 2, should throw an exception",
@@ -214,7 +213,7 @@ export const NegativeTestCases = [
       idu a = khali + "jam";
       matte sigona;
     `,
-    exception: khaliPointerException,
+    exception: nallaPointerException,
   },
   {
     name: "interpreter use khali variable in another variable initialisation expression, should throw an exception",
@@ -224,7 +223,7 @@ export const NegativeTestCases = [
       idu b = a + "hello";
       matte sigona;
     `,
-    exception: khaliPointerException,
+    exception: nallaPointerException,
   },
   {
     name: "interpreter use khali variable in complex expression, should throw an exception",
@@ -234,7 +233,7 @@ export const NegativeTestCases = [
       idu b = ((a*9) * a + "hello");
       matte sigona;
     `,
-    exception: khaliPointerException,
+    exception: nallaPointerException,
   },
   // sari - thappu case
   {
@@ -304,7 +303,7 @@ export const NegativeTestCases = [
         (khali * (4 + 8 + 10));
         matte sigona
       `,
-    output: khaliPointerException,
+    output: nallaPointerException,
   },
   {
     name: "complex expression test with one khali operand and one boolean operand, should throw an exception",
@@ -322,7 +321,7 @@ export const NegativeTestCases = [
         (sari * (khali + 8 + 10));
         matte sigona
       `,
-    output: khaliPointerException,
+    output: nallaPointerException,
   },
   {
     name: "complex expression test with one khali operand and one boolean operand - 3, should throw khali pointer exception",
@@ -331,7 +330,7 @@ export const NegativeTestCases = [
         (khali + sari);
         matte sigona
       `,
-    output: khaliPointerException,
+    output: nallaPointerException,
   },
   {
     name: "complex expression test with one boolean operand, should throw an exception",
@@ -406,7 +405,7 @@ export const NegativeTestCases = [
         helu khali + 5;
         matte sigona;
       `,
-    output: khaliPointerException,
+    output: nallaPointerException,
   },
   {
     name: "complex assign test with expression containing khali, should throw an exception",
@@ -416,7 +415,7 @@ export const NegativeTestCases = [
         a *= 5;
         matte sigona;
       `,
-    output: khaliPointerException,
+    output: nallaPointerException,
   },
   {
     name: "complex assign test with expression containing sari, should throw an exception",
@@ -426,7 +425,7 @@ export const NegativeTestCases = [
         a *= 5;
         matte sigona;
       `,
-    output: khaliPointerException,
+    output: nallaPointerException,
   },
   {
     name: "complex assign test with expression containing khali - 2, should throw an exception",
@@ -436,7 +435,7 @@ export const NegativeTestCases = [
         a /= 5;
         matte sigona;
       `,
-    output: khaliPointerException,
+    output: nallaPointerException,
   },
   // while loop negative tests
   {
@@ -481,7 +480,7 @@ export const NegativeTestCases = [
         helu khali && 90;
         matte sigona;
       `,
-    output: khaliPointerException,
+    output: nallaPointerException,
   },
   {
     name: "use of khali variable with &&, should throw an exception",
@@ -491,7 +490,7 @@ export const NegativeTestCases = [
         helu a && 90;
         matte sigona;
       `,
-    output: khaliPointerException,
+    output: nallaPointerException,
   },
   // modulus operator test
   {

@@ -1,8 +1,7 @@
 import { NodeType } from "../../../../constants/constants";
-import kannadascriptModule from "../../../../module/kannadascriptModule";
+import bhaiLangModule from "../../../../module/bhaiLangModule";
 import TokenExecutor from "../../tokenExecutor";
 import { ASTNode } from "../../types/nodeTypes";
-
 
 export default abstract class Expression {
   protected _tokenExecutor: TokenExecutor;
@@ -16,34 +15,34 @@ export default abstract class Expression {
   static getExpressionImpl(expressionType: keyof typeof NodeType): Expression {
     switch (expressionType) {
       case NodeType.AdditiveExpression:
-        return kannadascriptModule.getAdditiveExpression();
+        return bhaiLangModule.getAdditiveExpression();
 
       case NodeType.MultiplicativeExpression:
-        return kannadascriptModule.getMultiplicativeExpression();
+        return bhaiLangModule.getMultiplicativeExpression();
 
       case NodeType.PrimaryExpression:
-        return kannadascriptModule.getPrimaryExpression();
+        return bhaiLangModule.getPrimaryExpression();
 
       case NodeType.ParanthesizedExpression:
-        return kannadascriptModule.getParanthesizedExpression();
+        return bhaiLangModule.getParanthesizedExpression();
 
       case NodeType.AssignmentExpression:
-        return kannadascriptModule.getAssignmentExpression();
+        return bhaiLangModule.getAssignmentExpression();
 
       case NodeType.EqualityExpression:
-        return kannadascriptModule.getEqualityExpression();
+        return bhaiLangModule.getEqualityExpression();
 
       case NodeType.LogicalANDExpression:
-        return kannadascriptModule.getLogicalANDExpression();
+        return bhaiLangModule.getLogicalANDExpression();
 
       case NodeType.LogicalORExpression:
-        return kannadascriptModule.getLogicalORExpression();
+        return bhaiLangModule.getLogicalORExpression();
 
       case NodeType.RelationalExpression:
-        return kannadascriptModule.getRelationalExpression();
+        return bhaiLangModule.getRelationalExpression();
 
       default:
-        return kannadascriptModule.getIndentifierExpression();
+        return bhaiLangModule.getIndentifierExpression();
     }
   }
 
@@ -51,28 +50,39 @@ export default abstract class Expression {
     downstreamExpressionType: keyof typeof NodeType,
     operatorToken: string
   ) {
-    return this._getExpression(downstreamExpressionType, operatorToken, NodeType.BinaryExpression);
+    return this._getExpression(
+      downstreamExpressionType,
+      operatorToken,
+      NodeType.BinaryExpression
+    );
   }
 
   protected getLogicalExpression(
     downstreamExpressionType: keyof typeof NodeType,
     operatorToken: string
-    ) {
-    return this._getExpression(downstreamExpressionType, operatorToken, NodeType.LogicalExpression);
+  ) {
+    return this._getExpression(
+      downstreamExpressionType,
+      operatorToken,
+      NodeType.LogicalExpression
+    );
   }
 
   private _getExpression(
     downstreamExpressionType: keyof typeof NodeType,
     operatorToken: string,
     expressionType: keyof typeof NodeType
-    ) {
-    let left = Expression.getExpressionImpl(downstreamExpressionType).getExpression();
+  ) {
+    let left = Expression.getExpressionImpl(
+      downstreamExpressionType
+    ).getExpression();
 
     while (this._tokenExecutor.getLookahead()?.type === operatorToken) {
       const operator =
         this._tokenExecutor.eatTokenAndForwardLookahead(operatorToken);
-      const right =
-        Expression.getExpressionImpl(downstreamExpressionType).getExpression();
+      const right = Expression.getExpressionImpl(
+        downstreamExpressionType
+      ).getExpression();
 
       left = {
         type: expressionType,
@@ -84,5 +94,4 @@ export default abstract class Expression {
 
     return left;
   }
-
 }

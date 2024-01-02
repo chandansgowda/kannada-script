@@ -1,6 +1,5 @@
-import { TokenTypes } from "../../constants/kannadascriptSpec";
+import { TokenTypes } from "../../constants/bhaiLangSpec";
 import { Token, Tokenizer } from "../tokenizer/types";
-
 
 export default class TokenExecutor {
   private _tokenizer: Tokenizer;

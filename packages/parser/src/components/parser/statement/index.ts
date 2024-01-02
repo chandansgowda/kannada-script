@@ -1,9 +1,8 @@
-import { TokenTypes } from "../../../constants/kannadascriptSpec";
-import kannadascriptModule from "../../../module/kannadascriptModule";
+import { TokenTypes } from "../../../constants/bhaiLangSpec";
+import bhaiLangModule from "../../../module/bhaiLangModule";
 import { Token } from "../../tokenizer/types";
 import TokenExecutor from "../tokenExecutor";
 import { ASTNode } from "../types/nodeTypes";
-
 
 export default abstract class Statement {
   protected _tokenExecutor: TokenExecutor;
@@ -17,31 +16,31 @@ export default abstract class Statement {
   static getStatementImpl(lookahead: Token): Statement {
     switch (lookahead.type) {
       case TokenTypes.BOL_BHAI_TYPE:
-        return kannadascriptModule.getPrintStatement();
+        return bhaiLangModule.getPrintStatement();
 
       case TokenTypes.SEMI_COLON_TYPE:
-        return kannadascriptModule.getEmptyStatement();
+        return bhaiLangModule.getEmptyStatement();
 
       case TokenTypes.OPEN_CURLY_BRACE_TYPE:
-        return kannadascriptModule.getBlockStatement();
+        return bhaiLangModule.getBlockStatement();
 
       case TokenTypes.BHAI_YE_HAI_TYPE:
-        return kannadascriptModule.getVariableStatement();
+        return bhaiLangModule.getVariableStatement();
 
       case TokenTypes.AGAR_BHAI:
-        return kannadascriptModule.getIfStatement();
+        return bhaiLangModule.getIfStatement();
 
       case TokenTypes.JAB_TAK_BHAI:
-        return kannadascriptModule.getWhileStatement();
+        return bhaiLangModule.getWhileStatement();
 
       case TokenTypes.BAS_KAR_BHAI:
-        return kannadascriptModule.getBreakStatement();
+        return bhaiLangModule.getBreakStatement();
 
       case TokenTypes.AGLA_DEKH_BHAI:
-        return kannadascriptModule.getContinueStatement();
+        return bhaiLangModule.getContinueStatement();
 
       default:
-        return kannadascriptModule.getExpressionStatement();
+        return bhaiLangModule.getExpressionStatement();
     }
   }
 }

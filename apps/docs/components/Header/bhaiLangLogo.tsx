@@ -1,4 +1,4 @@
-export default function kannadascriptLogo() {
+export default function BhaiLangLogo() {
   return (
     <svg
       className="h-min w-full"

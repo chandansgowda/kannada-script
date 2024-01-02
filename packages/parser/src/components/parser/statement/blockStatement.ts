@@ -1,6 +1,6 @@
 import Statement from ".";
 
-import { TokenTypes } from "../../../constants/kannadascriptSpec";
+import { TokenTypes } from "../../../constants/bhaiLangSpec";
 import { NodeType } from "../../../constants/constants";
 import StatementList from "../statementList";
 import TokenExecutor from "../tokenExecutor";

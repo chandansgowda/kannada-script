@@ -2,11 +2,10 @@ import Visitor from ".";
 import { ASTNode, NodeType } from "kannada-script-parser";
 
 import InvalidStateException from "../../exceptions/invalidStateException";
-import khaliPointerException from "../../exceptions/khaliPointerException";
+import nallaPointerException from "../../exceptions/nallaPointerException";
 import RuntimeException from "../../exceptions/runtimeException";
 import { getOperationValue } from "../../helpers";
 import InterpreterModule from "../../module/interpreterModule";
-
 
 export default class BinaryExpression implements Visitor {
   visitNode(node: ASTNode) {
@@ -29,14 +28,19 @@ export default class BinaryExpression implements Visitor {
     } else if (node.type == NodeType.LogicalExpression) {
       this._checkkhali(node);
 
-      left = node.left.type == NodeType.BooleanLiteral ? (node.left.value == "sari" ? true : false) : InterpreterModule.getVisitor(node.left.type).visitNode(
-        node.left
-      );
+      left =
+        node.left.type == NodeType.BooleanLiteral
+          ? node.left.value == "sari"
+            ? true
+            : false
+          : InterpreterModule.getVisitor(node.left.type).visitNode(node.left);
 
-      right = node.right.type == NodeType.BooleanLiteral ? (node.right.value == "sari" ? true : false) : InterpreterModule.getVisitor(node.right.type).visitNode(
-        node.right
-      );
-
+      right =
+        node.right.type == NodeType.BooleanLiteral
+          ? node.right.value == "sari"
+            ? true
+            : false
+          : InterpreterModule.getVisitor(node.right.type).visitNode(node.right);
     }
     return getOperationValue({ left, right }, node.operator);
   }
@@ -48,7 +52,7 @@ export default class BinaryExpression implements Visitor {
       );
     }
 
-    const khaliException = new khaliPointerException(
+    const khaliException = new nallaPointerException(
       `khali operand ni jamta "${node.operator}" ke sath`
     );
 
@@ -70,7 +74,6 @@ export default class BinaryExpression implements Visitor {
   }
 
   private _checkBoolean(node: ASTNode) {
-
     if (!node.left || !node.right || !node.operator) {
       throw new InvalidStateException(
         `Left , right or operator not found for: ${node.type}`
@@ -99,9 +102,7 @@ export default class BinaryExpression implements Visitor {
   }
 
   private _getNodeValue(node: ASTNode) {
-
-    if (node.type === NodeType.NullLiteral)
-      return null;
+    if (node.type === NodeType.NullLiteral) return null;
 
     if (node.type === NodeType.BooleanLiteral) {
       return node.value === "sari" ? true : false;
@@ -110,9 +111,6 @@ export default class BinaryExpression implements Visitor {
     if (node.type === NodeType.IdentifierExpression && node.name)
       return InterpreterModule.getCurrentScope().get(node.name);
 
-    return InterpreterModule.getVisitor(node.type).visitNode(
-      node
-    );
+    return InterpreterModule.getVisitor(node.type).visitNode(node);
   }
-
 }

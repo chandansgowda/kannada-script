@@ -1,4 +1,4 @@
-export default class khaliPointerException extends Error {
+export default class nallaPointerException extends Error {
   constructor(errorMessage: string) {
     const errorName = "khaliPointerException";
     errorMessage = errorName + ": " + errorMessage;
