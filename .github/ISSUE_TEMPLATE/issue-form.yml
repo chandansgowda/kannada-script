@@ -1,7 +1,7 @@
 name: New Issue
 description: Description
 title: "Title "
-labels: ["bhai-lang"]
+labels: ["kannada-script"]
 body:
   - type: markdown
     attributes:
@@ -12,7 +12,7 @@ body:
     attributes:
       label: Description
       description: Enter a brief description
-      placeholder: Please include a summary. Please also include relevant motivation and context. 
+      placeholder: Please include a summary. Please also include relevant motivation and context.
       value: "Description"
     validations:
       required: true
@@ -24,7 +24,7 @@ body:
       options:
         - Design
         - Develop
-        - Bhai Lang
+        - Kannada Script
         - UI/UX
         - Other
     validations:
@@ -44,7 +44,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/DulLabs/bhai-lang/blob/develop/README.md)
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/DulLabs/kannada-script/blob/develop/README.md)
       options:
-        - label: I follow [Contributing Guidelines](https://github.com/DulLabs/bhai-lang/blob/develop/README.md) & [Code of conduct](https://github.com/DulLabs/bhai-lang/blob/develop/README.md) of bhai-lang.
+        - label: I follow [Contributing Guidelines](https://github.com/DulLabs/kannada-script/blob/develop/README.md) & [Code of conduct](https://github.com/DulLabs/kannada-script/blob/develop/README.md) of kannada-script.
           required: true

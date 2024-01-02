@@ -1,4 +1,4 @@
-import { TokenTypes } from "../../constants/bhaiLangSpec";
+import { TokenTypes } from "../../constants/kannadascriptSpec";
 import { Token, Tokenizer } from "../tokenizer/types";
 
 

@@ -1,7 +1,7 @@
 {
-  "name": "bhai-lang-interpreter",
+  "name": "kannada-script-interpreter",
   "version": "0.0.1",
-  "description": "Interpreter for bhai-lang",
+  "description": "Interpreter for kannada-script",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
@@ -13,21 +13,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DulLabs/bhai-lang.git"
+    "url": "git+https://github.com/DulLabs/kannada-script.git"
   },
   "keywords": [
     "programming",
     "language",
-    "bhai-lang",
+    "kannada-script",
     "bl",
     "javascript",
     "typescript"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DulLabs/bhai-lang/issues"
+    "url": "https://github.com/DulLabs/kannada-script/issues"
   },
-  "homepage": "https://github.com/DulLabs/bhai-lang#readme",
+  "homepage": "https://github.com/DulLabs/kannada-script#readme",
   "devDependencies": {
     "ts-node": "^10.4.0",
     "ts-jest": "^27.1.2",
@@ -36,6 +36,6 @@
     "@types/jest": "^27.4.0",
     "config": "*",
     "tsconfig": "*",
-    "bhai-lang-parser": "*"
+    "kannada-script-parser": "*"
   }
 }

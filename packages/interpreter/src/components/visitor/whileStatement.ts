@@ -1,5 +1,5 @@
 import Visitor from ".";
-import { ASTNode } from "bhai-lang-parser";
+import { ASTNode } from "kannada-script-parser";
 
 import RuntimeException from "../../exceptions/runtimeException";
 import InterpreterModule from "../../module/interpreterModule";
@@ -15,11 +15,11 @@ export default class WhileStatement implements Visitor {
       const parentScope = InterpreterModule.getCurrentScope();
 
       InterpreterModule.setCurrentScope(new Scope(parentScope));
-      
+
       InterpreterModule.getCurrentScope().setLoop(true);
 
 
-      for (let testResult = getConditionValue(), executions = 0; testResult === true || testResult === "sahi"; testResult = getConditionValue(), executions++) {
+      for (let testResult = getConditionValue(), executions = 0; testResult === true || testResult === "sari"; testResult = getConditionValue(), executions++) {
 
         if (InterpreterModule.getCurrentScope().isBreakStatement()) {
           break;

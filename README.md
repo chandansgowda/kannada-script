@@ -1,156 +1,156 @@
-<h1 align="center">Bhai Lang</h1>
+<h1 align="center">Kannada Script</h1>
 <p align="center">
-<a href="https://lgtm.com/projects/g/DulLabs/bhai-lang/alerts/"><img alt="Total alerts" src="https://img.shields.io/lgtm/alerts/g/DulLabs/bhai-lang.svg?logo=lgtm&logoWidth=18"/></a>
-<a href="https://lgtm.com/projects/g/DulLabs/bhai-lang/context:javascript"><img alt="Language grade: JavaScript" src="https://img.shields.io/lgtm/grade/javascript/g/DulLabs/bhai-lang.svg?logo=lgtm&logoWidth=18"/></a>
-<a href="https://github.com/DulLabs/bhai-lang/actions/workflows/node.js.yml/badge.svg"><img alt="Build" src="https://github.com/DulLabs/bhai-lang/actions/workflows/node.js.yml/badge.svg"/></a>
-<a href="https://bhailang.js.org/"><img alt="Build" src="https://img.shields.io/badge/website-bhailang.js.org-orange"/></a>
-<a href="https://www.npmjs.com/package/bhailang"><img alt="Build" src="https://img.shields.io/badge/npm-bhailang-orange"/></a>
-  
+<a href="https://lgtm.com/projects/g/DulLabs/kannada-script/alerts/"><img alt="Total alerts" src="https://img.shields.io/lgtm/alerts/g/DulLabs/kannada-script.svg?logo=lgtm&logoWidth=18"/></a>
+<a href="https://lgtm.com/projects/g/DulLabs/kannada-script/context:javascript"><img alt="Language grade: JavaScript" src="https://img.shields.io/lgtm/grade/javascript/g/DulLabs/kannada-script.svg?logo=lgtm&logoWidth=18"/></a>
+<a href="https://github.com/DulLabs/kannada-script/actions/workflows/node.js.yml/badge.svg"><img alt="Build" src="https://github.com/DulLabs/kannada-script/actions/workflows/node.js.yml/badge.svg"/></a>
+<a href="https://kannadascript.js.org/"><img alt="Build" src="https://img.shields.io/badge/website-kannadascript.js.org-orange"/></a>
+<a href="https://www.npmjs.com/package/kannadascript"><img alt="Build" src="https://img.shields.io/badge/npm-kannadascript-orange"/></a>
+
 </p>
 <p align="center">
-  This is official repository for bhai-lang.<br><br>
-  <b>Bhai lang is a toy programming language written in Typescript.</b>
+  This is official repository for kannada-script.<br><br>
+  <b>Kannada Script is a toy programming language written in Typescript.</b>
 </p>
 <br>
 
 <h2 align="center">Installation</h2>
 
 ```
-npm i -g bhailang
+npm i -g kannadascript
 ```
 
 <h2 align="center">Usage</h2>
 
-<h4 align="left">Create a new file (<code>test.bhai</code>)</h4>
+<h4 align="left">Create a new file (<code>test.kans</code>)</h4>
 
 
 <h4 align="left">Edit the file with a text editor.
-You can also try out your code on <a href="https://bhailang.js.org/#playground">Bhai Lang PlayGround</a></h4>
+You can also try out your code on <a href="https://kannadascript.js.org/#playground">Kannada Script PlayGround</a></h4>
 
 ```
-hi bhai
-  bol bhai "Hello bhai";
-bye bhai
+namaskara
+  helu "Hello anna";
+matte sigona
 
 ```
 
 <h4 align="left">Run</h4>
 
 ```
-bhailang test.bhai
+kannadascript test.kans
 ```
 
 <h4 align="left">Output</h4>
 
 ```
-hello bhai
+hello anna
 ```
 
 <h2 align="center">Documentation</h2>
 
 <h3 align="center">General</h3>
-<p align="center"><code>hi bhai</code> is the entrypoint for the program and all program must end with <code>bye bhai</code>. Anything outside of it will be ignored.</p>
+<p align="center"><code>namaskara</code> is the entrypoint for the program and all program must end with <code>matte sigona</code>. Anything outside of it will be ignored.</p>
 
 ```
 
 This will be ignored
 
-hi bhai
+namaskara
 // Write code here
-bye bhai
+matte sigona
 
 This too
 ```
 
 <h3 align="center">Variables</h3>
-<p align="center">Variables can be declared using <code>bhai ye hai</code>.</p>
+<p align="center">Variables can be declared using <code>idu</code>.</p>
 
 ```
 
-hi bhai
-  bhai ye hai a = 10;
-  bhai ye hai b = "two";
-  bhai ye hai c = 15;
+namaskara
+  idu a = 10;
+  idu b = "two";
+  idu c = 15;
   a = a + 1;
   b = 21;
   c *= 2;
-bye bhai
+matte sigona
 ```
 
 <h3 align="center">Types</h3>
-<p align="center">Numbers and strings are like other languages. Null values can be denoted using <code>nalla</code>. <code>sahi</code> and <code>galat</code> are the boolean values.</p>
+<p align="center">Numbers and strings are like other languages. Null values can be denoted using <code>khali</code>. <code>sari</code> and <code>thappu</code> are the boolean values.</p>
 
 ```
 
-hi bhai
-  bhai ye hai a = 10;
-  bhai ye hai b = 10 + (15*20);
-  bhai ye hai c = "two";
-  bhai ye hai d = 'ok';
-  bhai ye hai e = nalla;
-  bhai ye hai f = sahi;
-  bhai ye hai g = galat;
-bye bhai
+namaskara
+  idu a = 10;
+  idu b = 10 + (15*20);
+  idu c = "two";
+  idu d = 'ok';
+  idu e = khali;
+  idu f = sari;
+  idu g = thappu;
+matte sigona
 ```
 
 <h3 align="center">Built-ins</h3>
-<p align="center">Use <code>bol bhai</code> to print anything to console.</p>
+<p align="center">Use <code>helu</code> to print anything to console.</p>
 
 ```
 
-hi bhai
-  bol bhai "Hello World";
-  bhai ye hai a = 10;
+namaskara
+  helu "Hello World";
+  idu a = 10;
   {
-    bhai ye hai b = 20;
-    bol bhai a + b;
+    idu b = 20;
+    helu a + b;
   }
-  bol bhai 5, 'ok', nalla , sahi , galat;
-bye bhai
+  helu 5, 'ok', khali , sari , thappu;
+matte sigona
 ```
 
 <h3 align="center">Conditionals</h3>
-<p align="center">Bhailang supports if-else-if ladder construct , <code>agar bhai</code> block will execute if condition is <code>sahi</code>, otherwise one of the subsequently added <code>nahi to bhai</code> blocks will execute if their respective condition is <code>sahi</code>, and the <code>warna bhai</code> block will eventually execute if all of the above conditions are <code>galat</code>
+<p align="center">kannadascript supports if-else-if ladder construct , <code>enadru</code> block will execute if condition is <code>sari</code>, otherwise one of the subsequently added <code>illa andre</code> blocks will execute if their respective condition is <code>sari</code>, and the <code>enu illa andre</code> block will eventually execute if all of the above conditions are <code>thappu</code>
 
 ```
 
-hi bhai
-  bhai ye hai a = 10;
-  agar bhai (a < 20) {
-    bol bhai "a is less than 20";
-  } nahi to bhai ( a < 25 ) {
-    bol bhai "a is less than 25";
-  } warna bhai {
-    bol bhai "a is greater than or equal to 25";
+namaskara
+  idu a = 10;
+  enadru (a < 20) {
+    helu "a is less than 20";
+  } illa andre ( a < 25 ) {
+    helu "a is less than 25";
+  } enu illa andre {
+    helu "a is greater than or equal to 25";
   }
-bye bhai
+matte sigona
 ```
 
 <h3 align="center">Loops</h3>
-<p align="center">Statements inside <code>jab tak bhai</code> blocks are executed as long as a specified condition evaluates to sahi. If the condition becomes <code>galat</code>, statement within the loop stops executing and control passes to the statement following the loop. Use <code>bas kar bhai</code> to break the loop and <code className="language-cpp">agla dekh bhai</code> to continue within loop.</p>
+<p align="center">Statements inside <code>ellivargu</code> blocks are executed as long as a specified condition evaluates to sari. If the condition becomes <code>thappu</code>, statement within the loop stops executing and control passes to the statement following the loop. Use <code>saaku nilsu</code> to break the loop and <code className="language-cpp">munde nodu</code> to continue within loop.</p>
 
 
 ```
 
-hi bhai
-  bhai ye hai a = 0;
-  jab tak bhai (a < 10) {
+namaskara
+  idu a = 0;
+  ellivargu (a < 10) {
    a += 1;
-   agar bhai (a == 5) {
-    bol bhai "andar se bol bhai ", a;
-    agla dekh bhai;
+   enadru (a == 5) {
+    helu "andar se helu ", a;
+    munde nodu;
    }
-   agar bhai (a == 6) {
-    bas kar bhai;
+   enadru (a == 6) {
+    saaku nilsu;
    }
-   bol bhai a;
+   helu a;
   }
-  bol bhai "done";
-bye bhai
+  helu "done";
+matte sigona
 ```
 
 <h2 align="center">Development</h2>
-<p align="center">You can explore abstract syntax tree(AST) of bhailang <a href="https://bhailang-ast.netlify.app/" target="_blank">here</a>.</p>
+<p align="center">You can explore abstract syntax tree(AST) of kannadascript <a href="https://kannadascript-ast.netlify.app/" target="_blank">here</a>.</p>
 
 
 

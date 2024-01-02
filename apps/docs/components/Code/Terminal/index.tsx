@@ -5,13 +5,13 @@ const Terminal = (props: Props) => {
   const { output, isSuccess } = props;
   const terminalRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { 
+  useEffect(() => {
     if (output.length) {
       setTimeout(() => terminalRef.current?.scrollIntoView(false), 100);
     }
   }, [output]);
 
-  
+
   return (
     <div
     ref={terminalRef}
@@ -22,7 +22,7 @@ const Terminal = (props: Props) => {
       {isSuccess !== null && !isSuccess ? (
         <div className="text-red-700 output opacity-0">❌ Arre Bhai Bhai Bhai !!!</div>
       ) : (
-        <div className="text-green-700 output opacity-0">Shandaar bhai 🎉</div>
+        <div className="text-green-700 output opacity-0">Shandaar anna 🎉</div>
       )}
       {output.map((line, i) => {
         return (

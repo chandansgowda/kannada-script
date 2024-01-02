@@ -1,6 +1,6 @@
 import Statement from ".";
 
-import { TokenTypes } from "../../../constants/bhaiLangSpec";
+import { TokenTypes } from "../../../constants/kannadascriptSpec";
 import { NodeType } from "../../../constants/constants";
 import TokenExecutor from "../tokenExecutor";
 import { ASTNode } from "../types/nodeTypes";
@@ -44,8 +44,8 @@ export default class IfStatement extends Statement {
     const ifStatement = this.getConditionalStatement(TokenTypes.AGAR_BHAI);
     const alternates: ASTNode[] = [];
 
-    // Loop until we keep getting "nahi to bhai" or "warna bhai"
-    // Break as soon as we get the first "warna bhai" instance
+    // Loop until we keep getting "illa andre" or "enu illa andre"
+    // Break as soon as we get the first "enu illa andre" instance
     for (
       let lookahead = this._tokenExecutor.getLookahead();
       lookahead !== null && HANDLED_LOOP_TOKEN_TYPES.includes(lookahead.type);

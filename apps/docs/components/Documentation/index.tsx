@@ -7,17 +7,17 @@ const features = [
     name: "General",
     description: (
       <>
-        <code className="language-cpp">hi bhai</code> is the entrypoint for the
+        <code className="language-cpp">namaskara</code> is the entrypoint for the
         program and all program must end with{" "}
-        <code className="language-cpp">bye bhai</code>. Anything outside of it
+        <code className="language-cpp">matte sigona</code>. Anything outside of it
         will be ignored.
       </>
     ),
     code: `This will be ignored
 
-hi bhai
+namaskara
   // Write code here
-bye bhai
+matte sigona
 
 This too
     `,
@@ -27,17 +27,17 @@ This too
     description: (
       <>
         Variables can be declared using{" "}
-        <code className="language-cpp">bhai ye hai</code>.
+        <code className="language-cpp">idu</code>.
       </>
     ),
-    code: `hi bhai
-    bhai ye hai a = 10;
-    bhai ye hai b = "two";
-    bhai ye hai c = 15;
+    code: `namaskara
+    idu a = 10;
+    idu b = "two";
+    idu c = 15;
     a = a + 1;
     b = 21;
     c *= 2;
-bye bhai
+matte sigona
     `,
   },
   {
@@ -45,83 +45,83 @@ bye bhai
     description: (
       <>
         Numbers and strings are like other languages. Null values can be denoted
-        using <code className="language-cpp">nalla</code>.{" "}
-        <code className="language-cpp">sahi</code> and{" "}
-        <code className="language-cpp">galat</code> are the boolean values.
+        using <code className="language-cpp">khali</code>.{" "}
+        <code className="language-cpp">sari</code> and{" "}
+        <code className="language-cpp">thappu</code> are the boolean values.
       </>
     ),
-    code: `hi bhai
-    bhai ye hai a = 10;
-    bhai ye hai b = 10 + (15*20);
-    bhai ye hai c = "two";
-    bhai ye hai d = 'ok';
-    bhai ye hai e = nalla;
-    bhai ye hai f = sahi;
-    bhai ye hai g = galat;
-bye bhai
+    code: `namaskara
+    idu a = 10;
+    idu b = 10 + (15*20);
+    idu c = "two";
+    idu d = 'ok';
+    idu e = khali;
+    idu f = sari;
+    idu g = thappu;
+matte sigona
     `,
   },
   {
     name: "Built-ins",
     description: (
       <>
-        Use <code className="language-cpp">bol bhai</code> to print anything to
+        Use <code className="language-cpp">helu</code> to print anything to
         console.
       </>
     ),
-    code: `hi bhai
-    bol bhai "Hello World";
-    bhai ye hai a = 10;
+    code: `namaskara
+    helu "Hello World";
+    idu a = 10;
     {
-       bhai ye hai b = 20;
-       bol bhai a + b;
+       idu b = 20;
+       helu a + b;
     }
-    bol bhai 5, 'ok', nalla , sahi , galat;
-bye bhai
+    helu 5, 'ok', khali , sari , thappu;
+matte sigona
     `,
   },
   {
     name: "Conditionals",
     description: (
       <>
-        Bhailang supports if-else-if ladder construct , <code className="language-cpp">agar bhai</code> block will execute if condition is <code className="language-cpp">sahi</code>, otherwise one of the subsequently added <code className="language-cpp">nahi to bhai</code> blocks will execute if their respective condition is <code className="language-cpp">sahi</code>, and the <code className="language-cpp">warna bhai</code> block will eventually execute if all of the above conditions are <code className="language-cpp">galat</code>.
+        kannadascript supports if-else-if ladder construct , <code className="language-cpp">enadru</code> block will execute if condition is <code className="language-cpp">sari</code>, otherwise one of the subsequently added <code className="language-cpp">illa andre</code> blocks will execute if their respective condition is <code className="language-cpp">sari</code>, and the <code className="language-cpp">enu illa andre</code> block will eventually execute if all of the above conditions are <code className="language-cpp">thappu</code>.
       </>
     ),
-    code: `hi bhai
-    bhai ye hai a = 10;
-    agar bhai (a < 20) {
-      bol bhai "a is less than 20";
-    } nahi to bhai ( a < 25 ) {
-      bol bhai "a is less than 25";
-    } warna bhai {
-      bol bhai "a is greater than or equal to 25";
+    code: `namaskara
+    idu a = 10;
+    enadru (a < 20) {
+      helu "a is less than 20";
+    } illa andre ( a < 25 ) {
+      helu "a is less than 25";
+    } enu illa andre {
+      helu "a is greater than or equal to 25";
     }
-bye bhai
+matte sigona
     `
   },
   {
     name: "Loops",
     description: (
       <>
-        Statements inside <code className="language-cpp">jab tak bhai</code> blocks are executed as long as a specified condition evaluates to <code className="language-cpp">sahi</code>. If the condition becomes <code className="language-cpp">galat</code>, statement within the loop stops executing and control passes to the statement following the loop. 
-        Use <code className="language-cpp">bas kar bhai</code> to break the loop and <code className="language-cpp">agla dekh bhai</code> to continue within loop.
+        Statements inside <code className="language-cpp">ellivargu</code> blocks are executed as long as a specified condition evaluates to <code className="language-cpp">sari</code>. If the condition becomes <code className="language-cpp">thappu</code>, statement within the loop stops executing and control passes to the statement following the loop.
+        Use <code className="language-cpp">saaku nilsu</code> to break the loop and <code className="language-cpp">munde nodu</code> to continue within loop.
       </>
     ),
-    code: `hi bhai
-    bhai ye hai a = 0;
-    jab tak bhai (a < 10) {
+    code: `namaskara
+    idu a = 0;
+    ellivargu (a < 10) {
       a += 1;
-      agar bhai (a == 5) {
-        bol bhai "andar se bol bhai ", a;
-        agla dekh bhai;
+      enadru (a == 5) {
+        helu "andar se helu ", a;
+        munde nodu;
       }
-      agar bhai (a == 6) {
-        bas kar bhai;
+      enadru (a == 6) {
+        saaku nilsu;
       }
-      bol bhai a;
+      helu a;
     }
-    bol bhai "done";
-bye bhai
+    helu "done";
+matte sigona
     `
   }
 
@@ -136,7 +136,7 @@ export default function Documentation() {
             Documentation
           </h2>
           <p className="mt-4 text-gray-300">
-            Bhailang is dynamically typed toy programming language, based on an
+            kannadascript is dynamically typed toy programming language, based on an
             inside joke, written in Typescript.
           </p>
 

@@ -1,4 +1,4 @@
-import { ASTNode } from "bhai-lang-parser";
+import { ASTNode } from "kannada-script-parser";
 
 export default interface Visitor {
   visitNode(node: ASTNode): unknown;

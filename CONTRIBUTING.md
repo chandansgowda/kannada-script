@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-This documentation contains a set of guidelines to help you during the contribution process. 
+This documentation contains a set of guidelines to help you during the contribution process.
 We are happy to welcome all the contributions from anyone willing to improve/add new scripts to this project. Thank you for helping out and remember,
 **no contribution is too small.**
 
@@ -10,7 +10,7 @@ Below you will find the process and workflow used to review and merge your chang
 ## Step 1 : Find an issue
 - Take a look at the Existing Issues or create your **own** Issues!
 - Wait for the Issue to be assigned to you after which you can start working on it.
-- Note : Every change in this project should/must have an associated issue. 
+- Note : Every change in this project should/must have an associated issue.
 
 
 ![Screenshot (12)](https://user-images.githubusercontent.com/55774240/158111073-0961c932-6306-491f-beab-46985b1af15c.png)
@@ -18,9 +18,9 @@ Below you will find the process and workflow used to review and merge your chang
 ## Step 2 : Fork the Project
 - Fork this Repository. This will create a Local Copy of this Repository on your Github Profile. Keep a reference to the original project in `upstream` remote.
 ```
-$ git clone https://github.com/<your-username>/bhai-lang
-$ cd bhai-lang
-$ git remote add upstream https://github.com/DulLabs/bhai-lang
+$ git clone https://github.com/<your-username>/kannada-script
+$ cd kannada-script
+$ git remote add upstream https://github.com/DulLabs/kannada-script
 ```
 ![Screenshot (13)](https://user-images.githubusercontent.com/55774240/158111282-7f46c21f-c42e-4715-af06-4a92b8fc2162.png)
 
@@ -34,11 +34,11 @@ $ git rebase upstream/<branch-name>
 ## Step 3 : Branch
 Create a new branch. Use its name to identify the issue your addressing.
 ```
-# It will create a new branch with name Branch_Name and switch to that branch 
+# It will create a new branch with name Branch_Name and switch to that branch
 $ git checkout -b branch_name
 ```
 ## Step 4 : Work on the issue assigned
-- Work on the issue(s) assigned to you. 
+- Work on the issue(s) assigned to you.
 - Add all the files/folders needed.
 - After you've made changes or made your contribution to the project add changes to the branch you've just created by:
 ```
@@ -48,7 +48,7 @@ $ git add .
 ## Step 5 : Commit
 
  🎀🎀Before submitting an issue please find the correct folder where your program will go , You can discuss about it in the discussion.
- 
+
 - To commit give a descriptive message for the convenience of reveiwer by:
 ```
 # This message get associated with all files you have changed

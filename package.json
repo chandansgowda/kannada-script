@@ -1,5 +1,5 @@
 {
-  "name": "bhai-lang",
+  "name": "kannada-script",
   "version": "0.0.1",
   "private": true,
   "workspaces": [
@@ -21,7 +21,7 @@
     "typescript": "^4.5.4"
   },
   "keywords": [
-    "bhai-lang",
+    "kannada-script",
     "programming language",
     "compiler",
     "parser",

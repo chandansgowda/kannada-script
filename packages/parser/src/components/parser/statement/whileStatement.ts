@@ -1,6 +1,6 @@
 import Statement from ".";
 
-import { TokenTypes } from "../../../constants/bhaiLangSpec";
+import { TokenTypes } from "../../../constants/kannadascriptSpec";
 import { NodeType } from "../../../constants/constants";
 import { ASTNode } from "../types/nodeTypes";
 
@@ -20,7 +20,7 @@ export default class WhileStatement extends Statement {
         this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.CLOSED_PARENTHESIS_TYPE);
 
         if (this._tokenExecutor.getLookahead() == null) {
-            throw new SyntaxError(`Unexpected end of "jab tak bhai" statement`);
+            throw new SyntaxError(`Unexpected end of "ellivargu" statement`);
         }
 
         const body = Statement.getStatementImpl(this._tokenExecutor.getLookahead()!).getStatement();

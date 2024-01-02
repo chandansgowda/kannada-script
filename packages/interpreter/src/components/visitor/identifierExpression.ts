@@ -1,5 +1,5 @@
 import Visitor from ".";
-import { ASTNode } from "bhai-lang-parser";
+import { ASTNode } from "kannada-script-parser";
 
 import InvalidStateException from "../../exceptions/invalidStateException";
 import InterpreterModule from "../../module/interpreterModule";
@@ -12,9 +12,9 @@ export default class IdentifierExpression implements Visitor {
 
     let value = InterpreterModule.getCurrentScope().get(node.name);
 
-    if (value === null) value = "nalla";
-    else if (value === true) value = "sahi";
-    else if (value === false) value = "galat";
+    if (value === null) value = "khali";
+    else if (value === true) value = "sari";
+    else if (value === false) value = "thappu";
 
     return value;
   }

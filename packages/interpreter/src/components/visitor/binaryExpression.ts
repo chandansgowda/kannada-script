@@ -1,8 +1,8 @@
 import Visitor from ".";
-import { ASTNode, NodeType } from "bhai-lang-parser";
+import { ASTNode, NodeType } from "kannada-script-parser";
 
 import InvalidStateException from "../../exceptions/invalidStateException";
-import NallaPointerException from "../../exceptions/nallaPointerException";
+import khaliPointerException from "../../exceptions/khaliPointerException";
 import RuntimeException from "../../exceptions/runtimeException";
 import { getOperationValue } from "../../helpers";
 import InterpreterModule from "../../module/interpreterModule";
@@ -21,19 +21,19 @@ export default class BinaryExpression implements Visitor {
     // handling logical & binary both at the same place as both operate on two operands
     if (node.type == NodeType.BinaryExpression) {
       if (node.operator !== "==" && node.operator !== "!=") {
-        this._checkNalla(node);
+        this._checkkhali(node);
         this._checkBoolean(node);
-      } 
+      }
       left = this._getNodeValue(node.left);
       right = this._getNodeValue(node.right);
     } else if (node.type == NodeType.LogicalExpression) {
-      this._checkNalla(node);
+      this._checkkhali(node);
 
-      left = node.left.type == NodeType.BooleanLiteral ? (node.left.value == "sahi" ? true : false) : InterpreterModule.getVisitor(node.left.type).visitNode(
+      left = node.left.type == NodeType.BooleanLiteral ? (node.left.value == "sari" ? true : false) : InterpreterModule.getVisitor(node.left.type).visitNode(
         node.left
       );
 
-      right = node.right.type == NodeType.BooleanLiteral ? (node.right.value == "sahi" ? true : false) : InterpreterModule.getVisitor(node.right.type).visitNode(
+      right = node.right.type == NodeType.BooleanLiteral ? (node.right.value == "sari" ? true : false) : InterpreterModule.getVisitor(node.right.type).visitNode(
         node.right
       );
 
@@ -41,31 +41,31 @@ export default class BinaryExpression implements Visitor {
     return getOperationValue({ left, right }, node.operator);
   }
 
-  private _checkNalla(node: ASTNode) {
+  private _checkkhali(node: ASTNode) {
     if (!node.left || !node.right || !node.operator) {
       throw new InvalidStateException(
         `Left , right or operator not found for: ${node.type}`
       );
     }
 
-    const nallaException = new NallaPointerException(
-      `Nalla operand ni jamta "${node.operator}" ke sath`
+    const khaliException = new khaliPointerException(
+      `khali operand ni jamta "${node.operator}" ke sath`
     );
 
     if (
       node.left.type === NodeType.NullLiteral ||
       node.right.type === NodeType.NullLiteral
     )
-      throw nallaException;
+      throw khaliException;
 
     if (node.left.type === NodeType.IdentifierExpression && node.left.name) {
       const value = InterpreterModule.getCurrentScope().get(node.left.name);
-      if (value === null) throw nallaException;
+      if (value === null) throw khaliException;
     }
 
     if (node.right.type === NodeType.IdentifierExpression && node.right.name) {
       const value = InterpreterModule.getCurrentScope().get(node.right.name);
-      if (value === null) throw nallaException;
+      if (value === null) throw khaliException;
     }
   }
 
@@ -104,7 +104,7 @@ export default class BinaryExpression implements Visitor {
       return null;
 
     if (node.type === NodeType.BooleanLiteral) {
-      return node.value === "sahi" ? true : false;
+      return node.value === "sari" ? true : false;
     }
 
     if (node.type === NodeType.IdentifierExpression && node.name)
