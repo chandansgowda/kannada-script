@@ -16,7 +16,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (!ANALYTICS_ID) return;
-    const handleRouteChange = (url: string) => pageView(url); 
+    const handleRouteChange = (url: string) => pageView(url);
       router.events.on('routeChangeComplete', handleRouteChange);
 
       return () => {
@@ -27,16 +27,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return(
     <>
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`} strategy='afterInteractive'/>
-      <Script id="google-analytics" strategy='afterInteractive'>
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', '${ANALYTICS_ID}');
-        `}
-      </Script>
       <Component {...pageProps} />
   </>
   )

@@ -2,7 +2,7 @@
 
 </p>
 <p align="center">
-  This is official repository for kannada-script (Forked from Bhai-lang)<br><br>
+  This is official repository for kannada-script (Forked from BhaiLang)<br><br>
   <b>Kannada Script is a toy programming language written in Typescript.</b>
 </p>
 <br>
@@ -10,7 +10,7 @@
 <h2 align="center">Installation</h2>
 
 ```
-npm i -g kannadascript
+npm i -g kannada-script
 ```
 
 <h2 align="center">Usage</h2>
@@ -18,7 +18,7 @@ npm i -g kannadascript
 <h4 align="left">Create a new file (<code>test.kans</code>)</h4>
 
 <h4 align="left">Edit the file with a text editor.
-You can also try out your code on <a href="https://kannadascript.js.org/#playground">Kannada Script PlayGround</a></h4>
+You can also try out your code on <a href="https://kannadascript.netlify.app/#playground">Kannada Script PlayGround</a></h4>
 
 ```
 namaskara
