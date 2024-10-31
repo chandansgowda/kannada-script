@@ -1,5 +1,3 @@
-import BhaiLangLogo from "./bhaiLangLogo";
-
 export default function Header() {
   return (
     <div className="relative overflow-hidden header flex justify-center items-center">
