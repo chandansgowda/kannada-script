@@ -14,8 +14,8 @@ export default function Docs() {
         <meta property="og:title" content="kannadascript - A toy programming language based on an inside joke" key="title" />
         <meta property="og:type" content="website" key="type" />
         <meta property="og:url" content="https://kannadascript.js.org" key="url" />
-        <meta property="og:description" content="kannadascript is dynamically typed toy programming language, based on an inside joke, written in Typescript." key="description" />
-        <meta name="description" content="kannadascript is dynamically typed toy programming language, based on an inside joke, written in Typescript." />
+        <meta property="og:description" content="kannadascript is dynamically typed toy programming language, based on an inside joke, written in Typescript. (Forked from BhaiLang)" key="description" />
+        <meta name="description" content="kannadascript is dynamically typed toy programming language, based on an inside joke, written in Typescript. (Forked from BhaiLang)" />
         <meta property="og:site_name" content="kannadascript Documentation" key="siteName" />
       </Head>
       <Header />

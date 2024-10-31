@@ -79,7 +79,7 @@ const Code = (props: Props) => {
     <div id="playground" className="mx-4 sm:mx-12">
       <div className="sm:flex justify-between items-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-gray-100 sm:text-4xl my-4">
-          Playground
+          KannadaScript Playground
         </h2>
         <div className="flex">
           <button
@@ -95,6 +95,13 @@ const Code = (props: Props) => {
             className="mx-2 flex items-center justify-center px-8 border border-transparent text-base font-medium rounded-md text-bhagwa-700 bg-bhagwa-300 hover:bg-bhagwa-400 md:text-lg md:px-10 my-4 sm:my-8 sm:py-3"
           >
             Clear
+          </button>
+
+          <button
+            onClick={() => window.open('https://www.youtube.com/playlist?list=PLlGueSbLhZoBRnTsGiDJeTXuQCALOTN07', '_blank')}
+            className="mx-2 flex items-center justify-center px-8 border border-transparent text-base font-medium rounded-md text-bhagwa-700 bg-bhagwa-300 hover:bg-bhagwa-400 md:text-lg md:px-10 my-4 sm:my-8 sm:py-3"
+          >
+            Engineering in Kannada
           </button>
         </div>
       </div>
