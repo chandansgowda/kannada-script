@@ -6,11 +6,11 @@ module.exports = {
     extend: {
       colors: {
         "bhagwa": {
-        700: "#ff421a",
-        600: "#FF5733",
-        500: "#ff9680",
-        400: "#ffc0b3",
-        300: "#ffeae5",
+        700: "#ffd700",
+        600: "#ffdb58",
+        500: "#ffeb73",
+        400: "#fff99d",
+        300: "#fffdc4",
         },
         "background": "#121121",
         "editorBackground": "#333",

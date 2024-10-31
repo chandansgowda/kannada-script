@@ -12,11 +12,11 @@ export default function Header() {
                 <BhaiLangLogo />
               </div>
               <p className="mt-3 text-center text-base text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                A toy programming language written in Typescript
+                A toy programming language written in Typescript (BhaiLang fork)
               </p>
               <div className="prose text-center pt-4 pb-4">
                 {" "}
-                <code className="language-js">npm i -g kannadascript</code>
+                <code className="language-js">npm i -g kannada-script</code>
               </div>
               <div className="mt-5 sm:mt-8 sm:flex justify-center">
                 <div className="rounded-md shadow">
@@ -47,13 +47,21 @@ export default function Header() {
                 >
                   <span className="text-bhagwa-700"> @aniketsingh0104 </span>
                 </a>
-                and
+                , and
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
                   href="https://github.com/ristri"
                 >
                   <span className="text-bhagwa-700"> @ristri</span>
+                </a>
+                and
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/chandansgowda"
+                >
+                  <span className="text-bhagwa-700"> @chandansgowda</span>
                 </a>
               </div>
             </div>
