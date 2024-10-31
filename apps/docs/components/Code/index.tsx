@@ -92,14 +92,14 @@ const Code = (props: Props) => {
 
           <button
             onClick={clearCode}
-            className="mx-2 flex items-center justify-center px-8 border border-transparent text-base font-medium rounded-md text-bhagwa-700 bg-bhagwa-300 hover:bg-bhagwa-400 md:text-lg md:px-10 my-4 sm:my-8 sm:py-3"
+            className="mx-2 flex items-center justify-center px-8 border border-transparent text-base font-medium rounded-md text-white bg-bhagwa-300 hover:bg-bhagwa-400 md:text-lg md:px-10 my-4 sm:my-8 sm:py-3"
           >
             Clear
           </button>
 
           <button
             onClick={() => window.open('https://www.youtube.com/playlist?list=PLlGueSbLhZoBRnTsGiDJeTXuQCALOTN07', '_blank')}
-            className="mx-2 flex items-center justify-center px-8 border border-transparent text-base font-medium rounded-md text-bhagwa-700 bg-bhagwa-300 hover:bg-bhagwa-400 md:text-lg md:px-10 my-4 sm:my-8 sm:py-3"
+            className="mx-2 flex items-center justify-center px-8 border border-transparent text-base font-medium rounded-md text-bhagwa-700 bg-bhagwa-400 hover:bg-bhagwa-300 md:text-lg md:px-10 my-4 sm:my-8 sm:py-3"
           >
             Engineering in Kannada
           </button>

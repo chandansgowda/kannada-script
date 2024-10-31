@@ -3,7 +3,6 @@ import Head from "next/head";
 import Code from "../components/Code";
 import Documentation from "../components/Documentation";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
 
 
 export default function Docs() {
@@ -18,7 +17,6 @@ export default function Docs() {
         <meta name="description" content="kannadascript is dynamically typed toy programming language, based on an inside joke, written in Typescript. (Forked from BhaiLang)" />
         <meta property="og:site_name" content="kannadascript Documentation" key="siteName" />
       </Head>
-      <Header />
       <Code />
       <Documentation />
       <Footer />
