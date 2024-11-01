@@ -129,7 +129,7 @@ namaskara
   ellivargu (a < 10) {
    a += 1;
    enadru (a == 5) {
-    helu "andar se helu ", a;
+    helu "loop olaginda helu ", a;
     munde nodu;
    }
    enadru (a == 6) {
