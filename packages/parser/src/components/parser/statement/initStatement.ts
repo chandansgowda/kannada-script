@@ -24,9 +24,8 @@ export default class InitStatement extends Statement {
         ? this._statementList.getStatementList(TokenTypes.BYE_BHAI_TYPE)
         : [];
 
-    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.BYE_BHAI_TYPE);
-
-    this._tokenExecutor.eatOptionalSemiColonToken();
+    // Don't read past "matte sigona": anything after it is ignored.
+    this._tokenExecutor.expectToken(TokenTypes.BYE_BHAI_TYPE);
 
     return {
       type: NodeType.InitStatement,

@@ -10,12 +10,6 @@ export default class IdentifierExpression implements Visitor {
       throw new InvalidStateException(`Invalid node name for: ${node.type}`);
     }
 
-    let value = InterpreterModule.getCurrentScope().get(node.name);
-
-    if (value === null) value = "khali";
-    else if (value === true) value = "sari";
-    else if (value === false) value = "thappu";
-
-    return value;
+    return InterpreterModule.getCurrentScope().get(node.name);
   }
 }

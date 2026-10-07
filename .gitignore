@@ -39,3 +39,6 @@ yarn-error.log*
 
 # history vscode extension
 .history/
+
+# typescript incremental build info
+*.tsbuildinfo

@@ -1,49 +1,58 @@
 import Visitor from ".";
-import { ASTNode } from "kannada-script-parser";
+import { ASTNode, NodeType } from "kannada-script-parser";
 
 import InvalidStateException from "../../exceptions/invalidStateException";
-import nallaPointerException from "../../exceptions/nallaPointerException";
 import RuntimeException from "../../exceptions/runtimeException";
 import { getOperationValue } from "../../helpers";
+import { resolveMember } from "../../helpers/member";
 import InterpreterModule from "../../module/interpreterModule";
 
 export default class AssignmentExpression implements Visitor {
   visitNode(node: ASTNode) {
-    if (!node.left)
+    if (!node.left || !node.right || !node.operator)
       throw new InvalidStateException(
         `left node not present while executing: ${node.type}`
       );
 
-    let identifier = node.left.name;
-    let value: unknown;
+    if (node.left.type === NodeType.MemberExpression)
+      return this._assignMember(node.left, node.right, node.operator);
+
+    const identifier = node.left.name;
+    if (!identifier)
+      throw new InvalidStateException(`Invalid assignment target: ${node.type}`);
+
     const currentScope = InterpreterModule.getCurrentScope();
+    const value = InterpreterModule.evaluate(node.right);
 
-    if (node.right) {
-      value = InterpreterModule.getVisitor(node.right.type).visitNode(
-        node.right
+    const newValue =
+      node.operator === "="
+        ? // still validates that the variable exists
+          (currentScope.get(identifier), value)
+        : getOperationValue(
+            { left: currentScope.get(identifier), right: value },
+            node.operator
+          );
+
+    currentScope.assign(identifier, newValue);
+
+    return newValue;
+  }
+
+  private _assignMember(target: ASTNode, right: ASTNode, operator: string) {
+    const { container, index } = resolveMember(target);
+
+    if (!Array.isArray(container))
+      throw new RuntimeException(
+        `String olagina aksharavannu badalisoke aagalla. (Strings can't be changed)`
       );
-    }
 
-    if (identifier && node.operator) {
-      const left = currentScope.get(identifier);
+    const value = InterpreterModule.evaluate(right);
 
-      if (left === null && node.operator !== "=")
-        throw new nallaPointerException(
-          `khali operand ni jamta "${node.operator}" ke sath`
-        );
+    container[index] =
+      operator === "="
+        ? value
+        : getOperationValue({ left: container[index], right: value }, operator);
 
-      if ((left === true || left === false) && node.operator !== "=")
-        throw new RuntimeException(
-          `Boolean operand ni jamta "${node.operator}" ke sath`
-        );
-
-      const newValue = getOperationValue(
-        { left: currentScope.get(identifier), right: value },
-        node.operator
-      );
-      currentScope.assign(identifier, newValue);
-
-      return currentScope.get(identifier);
-    }
+    return container[index];
   }
 }

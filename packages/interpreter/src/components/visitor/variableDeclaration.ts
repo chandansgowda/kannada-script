@@ -1,29 +1,17 @@
 import Visitor from ".";
-import { ASTNode, NodeType } from "kannada-script-parser";
+import { ASTNode } from "kannada-script-parser";
 
 import InvalidStateException from "../../exceptions/invalidStateException";
 import InterpreterModule from "../../module/interpreterModule";
 
 export default class VariableDeclaration implements Visitor {
   visitNode(node: ASTNode) {
-    if (!node.id || !node.init) {
+    if (!node.id || !node.init || !node.id.name) {
       throw new InvalidStateException(`id or init not found for ${node.type}`);
     }
 
-    const identifier = node.id.name;
+    const value = InterpreterModule.evaluate(node.init);
 
-    let value;
-
-    if (node.init.type === NodeType.NullLiteral) value = null;
-    else if (node.init.type === NodeType.BooleanLiteral)
-      value = node.init.value === "sari" ? true : false;
-    else
-      value = InterpreterModule.getVisitor(node.init.type).visitNode(node.init);
-
-    const currentScope = InterpreterModule.getCurrentScope();
-
-    if (identifier) {
-      currentScope.declare(identifier, value);
-    }
+    InterpreterModule.getCurrentScope().declare(node.id.name, value);
   }
 }

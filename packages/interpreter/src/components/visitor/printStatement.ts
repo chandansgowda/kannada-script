@@ -3,6 +3,7 @@ import { ASTNode } from "kannada-script-parser";
 
 import InvalidStateException from "../../exceptions/invalidStateException";
 import InterpreterModule from "../../module/interpreterModule";
+import { formatValue } from "../../runtime/values";
 
 
 export default class PrintStatement implements Visitor {
@@ -13,16 +14,11 @@ export default class PrintStatement implements Visitor {
       );
 
     const value = node.expressions
-      .map((expression: ASTNode) => {
-        let currentNodeOutput = InterpreterModule.getVisitor(expression.type).visitNode(expression);
-        if (currentNodeOutput === true)
-          currentNodeOutput = "sari";
-        else if (currentNodeOutput === false)
-          currentNodeOutput = "thappu";
-        return currentNodeOutput;
-      }
+      .map((expression: ASTNode) =>
+        formatValue(InterpreterModule.evaluate(expression))
       )
       .join(" ");
-    console.log(value);
+
+    InterpreterModule.getOptions().print(value);
   }
 }

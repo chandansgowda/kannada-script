@@ -54,9 +54,15 @@ export default class AssignmentExpression extends Expression {
    * Extra check whether it's valid assignment target
    * @param {*} node
    */
-  private _checkValidAssignmentTarget(node: any) {
-    if (node.type === NodeType.IdentifierExpression) return node;
+  private _checkValidAssignmentTarget(node: ASTNode) {
+    if (
+      node.type === NodeType.IdentifierExpression ||
+      node.type === NodeType.MemberExpression
+    )
+      return node;
 
-    throw new SyntaxError("Invalid left hand side in assignment expression");
+    throw this._tokenExecutor.syntaxError(
+      `"=" ge edagade variable irbeku. (Invalid left hand side in assignment)`
+    );
   }
 }

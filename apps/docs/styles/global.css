@@ -1,99 +1,219 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "prismjs/themes/prism-tomorrow.css";
+
+/*
+ * Noto Sans Kannada (SIL Open Font License) with vertical metrics rewritten
+ * to match the Latin font next to it. The stock metrics have a much larger
+ * descent, which made Kannada text sit too high in buttons and stretched
+ * lines that mix English and Kannada.
+ */
+@font-face {
+  font-family: "Kannada UI";
+  src: url("/fonts/noto-sans-kannada-ui.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0951-0952, U+0964-0965, U+0C80-0CF3, U+200C-200D, U+20B9, U+25CC;
+}
+
+/* same font, metrics matching JetBrains Mono so editor lines stay equal height */
+@font-face {
+  font-family: "Kannada Mono";
+  src: url("/fonts/noto-sans-kannada-mono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0951-0952, U+0964-0965, U+0C80-0CF3, U+200C-200D, U+20B9, U+25CC;
+}
 
 html {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  color-scheme: dark;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
+  html {
+    scroll-behavior: auto;
+  }
 }
 
-.header{
-	min-height: 70vh;
+body {
+  @apply bg-dark font-sans text-neutral-200 antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-.playground-editor{
-	position: relative;
+/* what you type is what you see: no "<=" -> "≤" style ligatures */
+code,
+kbd,
+pre,
+textarea,
+.font-mono {
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
 }
 
-.editor-container {
-	height: 60vh;
-	overflow: auto;
-	tab-size: 4ch;
-	color: #fff;
-	background-color: #333;
+::selection {
+  background: rgba(255, 215, 0, 0.25);
 }
 
-.editorLineNumber {
-	position: absolute;
-	left: 0px;
-	color: #8a8a8a;
-	text-align: right;
-	width: 40px;
+@layer components {
+  .bg-grid {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/[0.08] bg-white/[0.03];
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.04), 0 20px 40px -24px rgba(0, 0, 0, 0.8);
+  }
+
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition duration-200 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-dark hover:bg-primary-light;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 0 1px rgba(255, 215, 0, 0.25), 0 8px 40px -8px rgba(255, 215, 0, 0.35);
+  }
+
+  .btn-secondary {
+    @apply btn border border-white/10 bg-white/[0.06] text-white hover:border-white/20 hover:bg-white/10;
+  }
+
+  .btn-ghost {
+    @apply btn px-3 text-neutral-400 hover:bg-white/[0.06] hover:text-white;
+  }
+
+  .icon-btn {
+    @apply inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-neutral-400 transition duration-200 hover:bg-white/[0.08] hover:text-white active:scale-90;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary ring-1 ring-inset ring-primary/20;
+  }
+
+  .kbd {
+    @apply inline-flex min-w-[1.5rem] items-center justify-center rounded-md border border-white/10 bg-white/[0.06] px-1.5 py-0.5 font-sans text-[11px] font-semibold text-neutral-300;
+  }
+
+  .inline-code {
+    @apply rounded-md bg-primary/10 px-1.5 py-0.5 font-mono text-[0.85em] text-primary;
+  }
+
+  .section-title {
+    @apply text-3xl font-extrabold tracking-tight text-white sm:text-4xl;
+  }
 }
 
-.editor {
-	counter-reset: line;
+/* ---------- Syntax highlighting (prism tokens) ---------- */
+.code-surface .token.comment {
+  color: #6b7280;
+  font-style: italic;
+}
+.code-surface .token.keyword {
+  color: #ffd700;
+  font-weight: 600;
+}
+.code-surface .token.boolean,
+.code-surface .token.null {
+  color: #ff6b81;
+}
+.code-surface .token.builtin {
+  color: #7dd3fc;
+}
+.code-surface .token.function {
+  color: #93c5fd;
+}
+.code-surface .token.string {
+  color: #a3e635;
+}
+.code-surface .token.number {
+  color: #fdba74;
+}
+.code-surface .token.operator {
+  color: #e5e5e5;
+}
+.code-surface .token.punctuation {
+  color: #a3a3a3;
 }
 
-.editor pre{
-	padding-left: 5rem !important;
-	height: 100%
+/* full screen height, excluding mobile browser toolbars where supported */
+.app-height {
+  height: 100vh;
+  height: 100dvh;
 }
 
-.codeArea {
-	overflow-wrap: normal !important;
-	word-break: keep-all !important;
-	outline: none;
-	padding-top: 1rem;
-	padding-left: 5rem !important;
-	/* z-index: 999999999; */
-	white-space: nowrap;
+/* ---------- Playground editor ---------- */
+.editor-scroll {
+  @apply relative overflow-auto;
+  tab-size: 2;
 }
 
-.terminal {
-  overflow-y: scroll;
-  transition-property: max-height, padding; 
-	transition-duration: 0.2s;
-	transition-timing-function: ease-in-out;
-  height:auto;
-  max-height: 30rem;
-	padding: 2rem;
-	opacity: 1;
+.code-editor {
+  min-width: 100%;
+  width: max-content;
 }
 
-.terminal .output{
-	opacity: 1;
-	transition: opacity 0.5s;
-	transition-delay: 0.3s;
+.code-editor textarea,
+.code-editor pre {
+  /* never wrap: keeps line numbers and overlays aligned */
+  white-space: pre !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+  padding-left: 3.75rem !important;
 }
 
-.terminal-collapsed {
-  max-height:0;
-	padding:0;
-	transition-property: max-height, padding; 
-	transition-duration: 0.2s;
-	transition-timing-function: ease-out;
+.code-editor textarea {
+  outline: none;
+  caret-color: #ffd700;
 }
 
-.documentation-code {
-  font-family: monospace;
-}
-
-.copied-text::after {
+.code-editor .line-number {
   position: absolute;
-  right: -6px;
-  top: 50%;
-  transform: translateY(-50%);
-  content: "";
-  width: 0px;
-  height: 0px;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: 8px solid #666;
+  left: 0;
+  width: 2.75rem;
+  text-align: right;
+  color: #525252;
+  user-select: none;
+  pointer-events: none;
+}
+
+.code-editor .line-number.is-active {
+  color: #ffd700;
+}
+
+.code-editor .line-number.is-error {
+  color: #ff4d63;
+}
+
+/* scrollbars */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+.thin-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+.thin-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
 }

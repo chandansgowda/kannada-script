@@ -33,7 +33,9 @@ export default class IfStatement extends Statement {
     );
 
     if (this._tokenExecutor.getLookahead() == null) {
-      throw new SyntaxError(`Unexpected end of "${tokenType}" statement`);
+      throw this._tokenExecutor.unexpectedEndError(
+        TokenTypes.OPEN_CURLY_BRACE_TYPE
+      );
     }
 
     const consequent = Statement.getStatementImpl(
