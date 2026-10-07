@@ -1,51 +1,60 @@
-import { useEffect, useRef, useState } from "react";
-import CopyIcon from "./CopyIcon";
-import TickIcon from "./TickIcon";
+import { useEffect, useState } from "react";
+
+import { CheckIcon, CopyIcon } from "../common/icons";
 
 interface Props {
   text: string;
+  className?: string;
+  label?: string;
+}
+
+export async function copyText(text: string) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    // fallback for browsers without clipboard API permissions
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    const copied = document.execCommand("copy");
+    textarea.remove();
+    return copied;
+  }
 }
 
 export default function CopyToClipboard(props: Props) {
-  const { text } = props;
+  const { text, className = "", label = "Copy" } = props;
   const [copySuccess, setCopySuccess] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (copySuccess) {
-      setTimeout(() => {
-        setCopySuccess(false);
-      }, 3000);
-    }
+    if (!copySuccess) return;
+    const timeout = setTimeout(() => setCopySuccess(false), 2000);
+    return () => clearTimeout(timeout);
   }, [copySuccess]);
 
-  function copyToClipboard(e: React.MouseEvent) {
+  async function copyToClipboard(e: React.MouseEvent) {
     e.stopPropagation();
-    if (text) {
-      navigator.clipboard?.writeText(text).then(() => {
-        setCopySuccess(true);
-      }).catch(error => {
-        console.log(error);
-      });
-    }
+    if (text && (await copyText(text))) setCopySuccess(true);
   }
 
   return (
-    <>
-      <button
-        ref={buttonRef}
-        className={"md:hidden absolute top-2 right-2 sm:top-4 sm:right-4 group-hover:flex items-center justify-center p-1 sm:p-2 border border-[#f0f6fc1a] text-base font-medium rounded-md text-gray-400 bg-[#333] hover:bg-[#4d4d4d] cursor-pointer transition-all duration-100 " + (copySuccess ? 'text-bhagwa-300 border-bhagwa-300' : '')}
-        onClick={copyToClipboard}
-      >
-        {copySuccess ?
-          <>
-            <TickIcon />
-            <span className="copied-text absolute top-1/2 -translate-y-1/2 right-[calc(100%+8px)] p-1 rounded-md text-xs font-normal text-bhagwa-300 bg-[#666] border border-transparent">
-              Copied!
-            </span>
-          </>
-          : <CopyIcon />}
-      </button>
-    </>
+    <button
+      type="button"
+      className={`inline-flex items-center gap-1.5 rounded-lg border px-2 py-1 text-xs font-semibold transition ${
+        copySuccess
+          ? "border-primary/40 bg-primary/10 text-primary"
+          : "border-white/10 bg-white/[0.04] text-neutral-400 hover:border-white/20 hover:text-white"
+      } ${className}`}
+      onClick={copyToClipboard}
+      aria-label={copySuccess ? "Copied" : label}
+      title={label}
+    >
+      {copySuccess ? <CheckIcon size={14} /> : <CopyIcon size={14} />}
+      <span>{copySuccess ? "Copied!" : label}</span>
+    </button>
   );
 }

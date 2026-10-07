@@ -91,6 +91,9 @@ const BUILTINS: { names: string[]; arity: NativeFunction["arity"]; implementatio
 
 export const BUILTIN_NAMES = BUILTINS.map(({ names }) => names[0]);
 
+/** Every spelling of each built-in, the first one is the canonical name. */
+export const BUILTIN_SPELLINGS = BUILTINS.map(({ names }) => names);
+
 export function createBuiltins(): Map<string, NativeFunction> {
   const builtins = new Map<string, NativeFunction>();
 

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs><clipPath id="r"><rect width="64" height="64" rx="16"/></clipPath></defs>
+  <g clip-path="url(#r)">
+    <rect width="64" height="64" fill="#FFD700"/>
+    <rect y="50" width="64" height="14" fill="#E8112D"/>
+  </g>
+  <text x="32" y="40" text-anchor="middle" font-family="Noto Sans Kannada, Tunga, Kedage, sans-serif" font-weight="800" font-size="32" fill="#1A1A1A">ಕ</text>
+</svg>
