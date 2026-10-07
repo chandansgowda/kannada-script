@@ -23,7 +23,9 @@ export default class WhileStatement extends Statement {
     );
 
     if (this._tokenExecutor.getLookahead() == null) {
-      throw new SyntaxError(`Unexpected end of "ellivargu" statement`);
+      throw this._tokenExecutor.unexpectedEndError(
+        TokenTypes.OPEN_CURLY_BRACE_TYPE
+      );
     }
 
     const body = Statement.getStatementImpl(

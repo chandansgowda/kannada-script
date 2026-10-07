@@ -1,3 +1,4 @@
+import { TokenTypes } from "../../../../constants/bhaiLangSpec";
 import { NodeType } from "../../../../constants/constants";
 import bhaiLangModule from "../../../../module/bhaiLangModule";
 import TokenExecutor from "../../tokenExecutor";
@@ -41,9 +42,38 @@ export default abstract class Expression {
       case NodeType.RelationalExpression:
         return bhaiLangModule.getRelationalExpression();
 
+      case NodeType.UnaryExpression:
+        return bhaiLangModule.getUnaryExpression();
+
+      case NodeType.CallMemberExpression:
+        return bhaiLangModule.getCallMemberExpression();
+
       default:
         return bhaiLangModule.getIndentifierExpression();
     }
+  }
+
+  /**
+   * Comma separated expressions until (not including) the stop token.
+   */
+  protected getExpressionList(stopTokenType: string) {
+    const expressions: ASTNode[] = [];
+
+    if (this._tokenExecutor.getLookahead()?.type === stopTokenType)
+      return expressions;
+
+    do {
+      expressions.push(
+        Expression.getExpressionImpl(
+          NodeType.AssignmentExpression
+        ).getExpression()
+      );
+    } while (
+      this._tokenExecutor.getLookahead()?.type === TokenTypes.COMMA_TYPE &&
+      this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.COMMA_TYPE)
+    );
+
+    return expressions;
   }
 
   protected getBinaryExpression(

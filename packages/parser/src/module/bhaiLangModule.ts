@@ -6,8 +6,10 @@ import ContinueStatement from "../components/parser/statement/continueStatement"
 import EmptyStatement from "../components/parser/statement/emptyStatement";
 import AdditiveExpression from "../components/parser/statement/expression/addititveExpression";
 import AssignmentExpression from "../components/parser/statement/expression/assignmentExpression";
+import CallMemberExpression from "../components/parser/statement/expression/callMemberExpression";
 import EqualityExpression from "../components/parser/statement/expression/equalityExpression";
 import IdentifierExpression from "../components/parser/statement/expression/identifierExpression";
+import ArrayLiteral from "../components/parser/statement/expression/literals/arrayLiteral";
 import BooleanLiteral from "../components/parser/statement/expression/literals/booleanLiteral";
 import NullLiteral from "../components/parser/statement/expression/literals/nullLiteral";
 import NumericLiteral from "../components/parser/statement/expression/literals/numericLiteral";
@@ -18,10 +20,14 @@ import MultiplicativeExpression from "../components/parser/statement/expression/
 import ParanthesizedExpression from "../components/parser/statement/expression/paranthesizedExpression";
 import PrimaryExpression from "../components/parser/statement/expression/primaryExpression";
 import RelationalExpression from "../components/parser/statement/expression/relationalExpression";
+import UnaryExpression from "../components/parser/statement/expression/unaryExpression";
 import ExpressionStatement from "../components/parser/statement/expressionStatement";
+import ForStatement from "../components/parser/statement/forStatement";
+import FunctionDeclaration from "../components/parser/statement/functionDeclaration";
 import IfStatement from "../components/parser/statement/ifStatement";
 import InitStatement from "../components/parser/statement/initStatement";
 import PrintStatement from "../components/parser/statement/printStatement";
+import ReturnStatement from "../components/parser/statement/returnStatement";
 import VariableStatement from "../components/parser/statement/variableStatement";
 import WhileStatement from "../components/parser/statement/whileStatement";
 import StatementList from "../components/parser/statementList";
@@ -60,6 +66,12 @@ export default class bhaiLangModule {
   private static _breakStatement?: BreakStatement;
   private static _continueStatement?: ContinueStatement;
   private static _whileStatement?: WhileStatement;
+  private static _unaryExpression?: UnaryExpression;
+  private static _callMemberExpression?: CallMemberExpression;
+  private static _arrayLiteral?: ArrayLiteral;
+  private static _functionDeclaration?: FunctionDeclaration;
+  private static _returnStatement?: ReturnStatement;
+  private static _forStatement?: ForStatement;
 
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
@@ -291,6 +303,52 @@ export default class bhaiLangModule {
     }
 
     return this._nullLiteral;
+  }
+
+  static getUnaryExpression() {
+    if (!this._unaryExpression)
+      this._unaryExpression = new UnaryExpression(this.getTokenExecutor());
+
+    return this._unaryExpression;
+  }
+
+  static getCallMemberExpression() {
+    if (!this._callMemberExpression)
+      this._callMemberExpression = new CallMemberExpression(
+        this.getTokenExecutor()
+      );
+
+    return this._callMemberExpression;
+  }
+
+  static getArrayLiteral() {
+    if (!this._arrayLiteral)
+      this._arrayLiteral = new ArrayLiteral(this.getTokenExecutor());
+
+    return this._arrayLiteral;
+  }
+
+  static getFunctionDeclaration() {
+    if (!this._functionDeclaration)
+      this._functionDeclaration = new FunctionDeclaration(
+        this.getTokenExecutor()
+      );
+
+    return this._functionDeclaration;
+  }
+
+  static getReturnStatement() {
+    if (!this._returnStatement)
+      this._returnStatement = new ReturnStatement(this.getTokenExecutor());
+
+    return this._returnStatement;
+  }
+
+  static getForStatement() {
+    if (!this._forStatement)
+      this._forStatement = new ForStatement(this.getTokenExecutor());
+
+    return this._forStatement;
   }
 
   static getProgram() {

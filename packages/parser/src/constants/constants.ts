@@ -27,4 +27,12 @@ export const NodeType = {
   NullLiteral: "NullLiteral",
   VariableDeclaration: "VariableDeclaration",
   Program: "Program",
+  UnaryExpression: "UnaryExpression",
+  CallMemberExpression: "CallMemberExpression",
+  CallExpression: "CallExpression",
+  MemberExpression: "MemberExpression",
+  ArrayLiteral: "ArrayLiteral",
+  FunctionDeclaration: "FunctionDeclaration",
+  ReturnStatement: "ReturnStatement",
+  ForStatement: "ForStatement",
 } as const;

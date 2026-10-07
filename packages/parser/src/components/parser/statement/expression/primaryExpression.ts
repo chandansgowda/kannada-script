@@ -21,9 +21,26 @@ export default class PrimaryExpression extends Expression {
         return Literal.getLiteralImpl(token.type).getLiteral();
       case TokenTypes.khali_TYPE:
         return this._getkhaliLiteral();
-      default:
+      case TokenTypes.OPEN_BRACKET_TYPE:
+        return Literal.getLiteralImpl(token.type).getLiteral();
+      case TokenTypes.IDENTIFIER_TYPE:
         return this._getLeftHandSideExpression();
+      default:
+        throw this._unexpectedTokenError();
     }
+  }
+
+  private _unexpectedTokenError() {
+    const token = this._tokenExecutor.getLookahead();
+
+    if (!token)
+      return this._tokenExecutor.syntaxError(
+        `Code ardhakke nintide, illi ondu value beku. (Unexpected end of input, expected an expression)`
+      );
+
+    return this._tokenExecutor.syntaxError(
+      `illi ondu value beku, aadre "${token.value}" sikkide. (Expected an expression but found "${token.value}")`
+    );
   }
 
   private _getkhaliLiteral() {

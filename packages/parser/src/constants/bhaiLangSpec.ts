@@ -21,6 +21,12 @@ export const TokenTypes = {
 
   AGLA_DEKH_BHAI: "munde nodu",
 
+  FUNCTION_TYPE: "kelasa",
+
+  RETURN_TYPE: "kodu",
+
+  FOR_TYPE: "prathi",
+
   khali_TYPE: "khali",
 
   SEMI_COLON_TYPE: ";",
@@ -32,6 +38,10 @@ export const TokenTypes = {
   OPEN_PARENTHESIS_TYPE: "(",
 
   CLOSED_PARENTHESIS_TYPE: ")",
+
+  OPEN_BRACKET_TYPE: "[",
+
+  CLOSED_BRACKET_TYPE: "]",
 
   COMMA_TYPE: ",",
 
@@ -57,10 +67,74 @@ export const TokenTypes = {
 
   LOGICAL_AND: "LOGICAL_AND",
 
-  LOGICAL_OR: "LOGICAL_OR"
+  LOGICAL_OR: "LOGICAL_OR",
+
+  LOGICAL_NOT: "LOGICAL_NOT",
 };
 
-export const SPEC = [
+export type SpecEntry = {
+  regex: RegExp;
+  tokenType: string | null;
+  // When set, the token's value is replaced by this canonical spelling, so
+  // aliases (e.g. Kannada script keywords, "mattu" for "&&") parse identically.
+  canonical?: string;
+};
+
+// A keyword must not be followed by a letter, combining mark (Kannada vowel
+// signs are marks), digit or underscore. `\b` only understands ASCII.
+const WORD_END = "(?![\\p{L}\\p{M}\\p{N}_])";
+
+/**
+ * Builds a regex matching any of the given spellings of a keyword. Multi-word
+ * keywords allow any amount of whitespace between their words.
+ */
+const keyword = (...spellings: string[]) =>
+  new RegExp(
+    `^(?:${spellings
+      .map((spelling) => spelling.split(" ").join("\\s+"))
+      .join("|")})${WORD_END}`,
+    "u"
+  );
+
+const DIGIT = "[0-9೦-೯]";
+
+/**
+ * Every keyword with its Kannada script spellings. The first spelling is the
+ * canonical one.
+ */
+export const KEYWORDS = {
+  namaskara: ["namaskara", "ನಮಸ್ಕಾರ"],
+  matteSigona: ["matte sigona", "ಮತ್ತೆ ಸಿಗೋಣ"],
+  helu: ["helu", "ಹೇಳು"],
+  idu: ["idu", "ಇದು"],
+  enadru: ["enadru", "ಏನಾದ್ರು", "ಏನಾದರೂ"],
+  illaAndre: ["illa andre", "ಇಲ್ಲ ಅಂದ್ರೆ"],
+  enuIllaAndre: ["enu illa andre", "ಏನು ಇಲ್ಲ ಅಂದ್ರೆ", "ಏನೂ ಇಲ್ಲ ಅಂದ್ರೆ"],
+  ellivargu: ["ellivargu", "ಎಲ್ಲಿವರೆಗೂ", "ಎಲ್ಲಿವರೆಗು"],
+  saakuNilsu: ["saaku nilsu", "ಸಾಕು ನಿಲ್ಸು"],
+  mundeNodu: ["munde nodu", "ಮುಂದೆ ನೋಡು"],
+  kelasa: ["kelasa", "ಕೆಲಸ"],
+  kodu: ["kodu", "ಕೊಡು"],
+  prathi: ["prathi", "ಪ್ರತಿ"],
+  khali: ["khali", "ಖಾಲಿ"],
+  sari: ["sari", "ಸರಿ"],
+  thappu: ["thappu", "ತಪ್ಪು"],
+  mattu: ["mattu", "ಮತ್ತು"],
+  athava: ["athava", "ಅಥವಾ"],
+  alla: ["alla", "ಅಲ್ಲ"],
+} as const;
+
+const keywordEntry = (
+  spellings: readonly string[],
+  tokenType: string,
+  canonical: string = spellings[0]
+): SpecEntry => ({
+  regex: keyword(...spellings),
+  tokenType,
+  canonical,
+});
+
+export const SPEC: SpecEntry[] = [
   // Whitespcaes
   { regex: /^\s+/, tokenType: TokenTypes.NULL_TYPE },
 
@@ -76,33 +150,48 @@ export const SPEC = [
   { regex: /^\}/, tokenType: TokenTypes.CLOSED_CURLY_BRACE_TYPE },
   { regex: /^\(/, tokenType: TokenTypes.OPEN_PARENTHESIS_TYPE },
   { regex: /^\)/, tokenType: TokenTypes.CLOSED_PARENTHESIS_TYPE },
+  { regex: /^\[/, tokenType: TokenTypes.OPEN_BRACKET_TYPE },
+  { regex: /^\]/, tokenType: TokenTypes.CLOSED_BRACKET_TYPE },
   { regex: /^,/, tokenType: TokenTypes.COMMA_TYPE },
 
   //Keywords
-  { regex: /^\bnamaskara\b/, tokenType: TokenTypes.HI_BHAI_TYPE },
-  { regex: /^\bmatte sigona\b/, tokenType: TokenTypes.BYE_BHAI_TYPE },
-  { regex: /^\bhelu\b/, tokenType: TokenTypes.BOL_BHAI_TYPE },
-  { regex: /^\bidu\b/, tokenType: TokenTypes.BHAI_YE_HAI_TYPE },
-  { regex: /^\benadru\b/, tokenType: TokenTypes.AGAR_BHAI },
-  { regex: /^\billa andre\b/, tokenType: TokenTypes.NAHI_TO_BHAI },
-  { regex: /^\benu illa andre\b/, tokenType: TokenTypes.WARNA_BHAI },
-  { regex: /^\bkhali\b/, tokenType: TokenTypes.khali_TYPE },
-  { regex: /^\bellivargu\b/, tokenType: TokenTypes.JAB_TAK_BHAI },
-  { regex: /^\bsaaku nilsu\b/, tokenType: TokenTypes.BAS_KAR_BHAI },
-  { regex: /^\bmunde nodu\b/, tokenType: TokenTypes.AGLA_DEKH_BHAI },
+  keywordEntry(KEYWORDS.namaskara, TokenTypes.HI_BHAI_TYPE),
+  keywordEntry(KEYWORDS.matteSigona, TokenTypes.BYE_BHAI_TYPE),
+  keywordEntry(KEYWORDS.helu, TokenTypes.BOL_BHAI_TYPE),
+  keywordEntry(KEYWORDS.idu, TokenTypes.BHAI_YE_HAI_TYPE),
+  keywordEntry(KEYWORDS.enadru, TokenTypes.AGAR_BHAI),
+  keywordEntry(KEYWORDS.illaAndre, TokenTypes.NAHI_TO_BHAI),
+  keywordEntry(KEYWORDS.enuIllaAndre, TokenTypes.WARNA_BHAI),
+  keywordEntry(KEYWORDS.khali, TokenTypes.khali_TYPE),
+  keywordEntry(KEYWORDS.ellivargu, TokenTypes.JAB_TAK_BHAI),
+  keywordEntry(KEYWORDS.saakuNilsu, TokenTypes.BAS_KAR_BHAI),
+  keywordEntry(KEYWORDS.mundeNodu, TokenTypes.AGLA_DEKH_BHAI),
+  keywordEntry(KEYWORDS.kelasa, TokenTypes.FUNCTION_TYPE),
+  keywordEntry(KEYWORDS.kodu, TokenTypes.RETURN_TYPE),
+  keywordEntry(KEYWORDS.prathi, TokenTypes.FOR_TYPE),
+  keywordEntry(KEYWORDS.mattu, TokenTypes.LOGICAL_AND, "&&"),
+  keywordEntry(KEYWORDS.athava, TokenTypes.LOGICAL_OR, "||"),
+  keywordEntry(KEYWORDS.alla, TokenTypes.LOGICAL_NOT, "!"),
 
-  // Number
-  { regex: /^[+-]?([\d]*[.])?[\d]+/, tokenType: TokenTypes.NUMBER_TYPE },
+  // Number (signs are handled by the parser as unary operators, so `a-1`
+  // is a subtraction). Kannada digits (೦-೯) are supported too.
+  {
+    regex: new RegExp(`^(?:${DIGIT}*\\.)?${DIGIT}+`),
+    tokenType: TokenTypes.NUMBER_TYPE,
+  },
 
   // Boolean
-  { regex: /^\bsari\b/, tokenType: TokenTypes.BOOLEAN_TYPE },
-  { regex: /^\bthappu\b/, tokenType: TokenTypes.BOOLEAN_TYPE },
+  keywordEntry(KEYWORDS.sari, TokenTypes.BOOLEAN_TYPE),
+  keywordEntry(KEYWORDS.thappu, TokenTypes.BOOLEAN_TYPE),
 
-  // Identifier
-  { regex: /^\w+/, tokenType: TokenTypes.IDENTIFIER_TYPE },
+  // Identifier: letters from any script (so Kannada names work), digits, _
+  { regex: /^[\p{L}_][\p{L}\p{M}\p{N}_]*/u, tokenType: TokenTypes.IDENTIFIER_TYPE },
 
   // Equality operator: ==, !=
   {regex: /^[=!]=/, tokenType: TokenTypes.EQUALITY_OPERATOR},
+
+  // logical not: !
+  { regex: /^!/, tokenType: TokenTypes.LOGICAL_NOT },
 
   // Assignment operators: =, *=, /=, +=, -=
   { regex: /^=/, tokenType: TokenTypes.SIMPLE_ASSIGN_TYPE },
@@ -117,9 +206,9 @@ export const SPEC = [
   {regex: /^&&/, tokenType: TokenTypes.LOGICAL_AND},
   {regex: /^\|\|/, tokenType: TokenTypes.LOGICAL_OR},
 
-  // String
-  { regex: /^"[^"]*"/, tokenType: TokenTypes.STRING_TYPE },
-  { regex: /^'[^']*'/, tokenType: TokenTypes.STRING_TYPE },
+  // String (supports escapes like \" \n \t \\)
+  { regex: /^"(?:[^"\\]|\\[\s\S])*"/, tokenType: TokenTypes.STRING_TYPE },
+  { regex: /^'(?:[^'\\]|\\[\s\S])*'/, tokenType: TokenTypes.STRING_TYPE },
 ];
 
-export type Spec = typeof SPEC;
+export type Spec = SpecEntry[];

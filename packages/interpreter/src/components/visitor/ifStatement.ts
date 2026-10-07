@@ -2,51 +2,39 @@ import Visitor from ".";
 import { ASTNode } from "kannada-script-parser";
 
 import InterpreterModule from "../../module/interpreterModule";
-import Scope from "../scope";
+import { isTruthy } from "../../runtime/values";
 
 
 export default class IfStatement implements Visitor {
 
-  private evaluateNode(node: ASTNode | undefined, parentScope: Scope) {
+  private evaluateNode(node: ASTNode | undefined) {
     if (node) {
-      InterpreterModule.setCurrentScope(new Scope(parentScope));
-      InterpreterModule.getCurrentScope().setLoop(parentScope.isLoop());
-      InterpreterModule.getVisitor(node.type).visitNode(node);
+      InterpreterModule.withScope(() => InterpreterModule.evaluate(node));
     }
   }
 
   visitNode(node: ASTNode) {
     const test = node.test;
-    const parentScope = InterpreterModule.getCurrentScope();
-    if (test) {
-      const testResult = InterpreterModule.getVisitor(test.type).visitNode(test);
-      if (testResult === true || testResult === "sari") {
-        this.evaluateNode(node.consequent, parentScope);
-      } else {
-        const alternates = node.alternates;
-        if (alternates && alternates.length > 0) {
-          for (var alternate of alternates) {
-            const alternateTest = alternate.test;
-            if (!alternateTest) {
-              // Reached the "enu illa andre" node in the alternate list, simply evaluate it and break
-              this.evaluateNode(alternate, parentScope);
-              break;
-            } else {
-              // Evaluate the "test" condition of the "illa andre" node
-              // If the condition is true, evaluate the node and break
-              const testResult = InterpreterModule.getVisitor(alternateTest!.type).visitNode(alternateTest);
-              if (testResult === true || testResult === "sari") {
-                this.evaluateNode(alternate.consequent, parentScope);
-                break;
-              }
-            }
-          }
-        }
+    if (!test) return;
+
+    if (isTruthy(InterpreterModule.evaluate(test))) {
+      this.evaluateNode(node.consequent);
+      return;
+    }
+
+    for (const alternate of node.alternates ?? []) {
+      // "illa andre" nodes have a test but no alternates of their own
+      if (!alternate.test || alternate.alternates) {
+        // Reached the "enu illa andre" node in the alternate list, simply evaluate it
+        this.evaluateNode(alternate);
+        return;
+      }
+
+      // Evaluate the "test" condition of the "illa andre" node
+      if (isTruthy(InterpreterModule.evaluate(alternate.test))) {
+        this.evaluateNode(alternate.consequent);
+        return;
       }
     }
-    parentScope.setBreakStatement(InterpreterModule.getCurrentScope().isBreakStatement());
-    parentScope.setContinueStatement(InterpreterModule.getCurrentScope().isContinueStatement());
-
-    InterpreterModule.setCurrentScope(parentScope);
   }
 }

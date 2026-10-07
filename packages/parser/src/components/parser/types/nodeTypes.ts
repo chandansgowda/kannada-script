@@ -11,7 +11,15 @@ export type ASTNode = {
   id?: ASTNode;
   init?: ASTNode | null;
   declarations?: ASTNode[];
-  test?: ASTNode;
+  test?: ASTNode | null;
   consequent?: ASTNode;
   alternates?: ASTNode[];
+  argument?: ASTNode | null;
+  arguments?: ASTNode[];
+  callee?: ASTNode;
+  object?: ASTNode;
+  property?: ASTNode;
+  elements?: ASTNode[];
+  params?: ASTNode[];
+  update?: ASTNode | null;
 };

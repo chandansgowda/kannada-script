@@ -425,7 +425,7 @@ export const NegativeTestCases = [
         a *= 5;
         matte sigona;
       `,
-    output: nallaPointerException,
+    output: RuntimeException,
   },
   {
     name: "complex assign test with expression containing khali - 2, should throw an exception",

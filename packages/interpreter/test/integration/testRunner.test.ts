@@ -33,8 +33,11 @@ WithOutputPositiveTests.forEach((testCase) => {
 
 NegativeTestCases.forEach((testCase) => {
   test(testCase.name, () => {
-    expect(() => interpreter.interpret(testCase.input)).toThrowError(
-      testCase.exception
+    // a small step budget keeps the infinite loop cases fast
+    expect(() =>
+      interpreter.interpret(testCase.input, { maxSteps: 10000 })
+    ).toThrowError(
+      testCase.output
     );
   });
 });
@@ -210,7 +213,7 @@ test("whileStatement test with nested loops - 6, should success", () => {
   expect(console.log).toHaveBeenCalledWith("2 baar hi chapunga");
 });
 
-test("whileStatement test with infinite loop, should throw runtime exception after 5000 executions", () => {
+test("whileStatement test with infinite loop, should throw runtime exception after maxSteps executions", () => {
   expect(() =>
     interpreter.interpret(`
     namaskara
@@ -220,10 +223,10 @@ test("whileStatement test with infinite loop, should throw runtime exception aft
     }
     matte sigona;
 
-    `)
+    `, { maxSteps: 5000 })
   ).toThrowError(RuntimeException);
 
-  expect(console.log).toHaveBeenCalledTimes(5001);
+  expect(console.log).toHaveBeenCalledTimes(5000);
   expect(console.log).toHaveBeenCalledWith("anna");
 });
 

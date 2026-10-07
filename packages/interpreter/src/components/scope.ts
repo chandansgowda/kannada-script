@@ -3,37 +3,11 @@ import RuntimeException from "../exceptions/runtimeException";
 
 export default class Scope {
   _variables: Map<string, unknown> = new Map();
-  _isLoop = false;
-  _isBreakStatement = false;
-  _isContinueStatement = false;
   _parentScope: Scope | null;
 
-  constructor(parentScope: Scope | null) {
+  constructor(parentScope: Scope | null, variables?: Map<string, unknown>) {
     this._parentScope = parentScope;
-  }
-
-  isLoop() {
-    return this._isLoop;
-  }
-
-  setLoop(isLoop: boolean) {
-    this._isLoop = isLoop;
-  }
-
-  setBreakStatement(isBreakStatement: boolean) {
-    this._isBreakStatement = isBreakStatement;
-  }
-
-  setContinueStatement(isContinueStatement: boolean) {
-    this._isContinueStatement = isContinueStatement;
-  }
-
-  isBreakStatement() {
-    return this._isBreakStatement;
-  }
-
-  isContinueStatement() {
-    return this._isContinueStatement;
+    if (variables) this._variables = variables;
   }
 
   get(identifier: string): unknown {
@@ -45,7 +19,9 @@ export default class Scope {
       return this._parentScope.get(identifier);
     }
 
-    throw new RuntimeException(`Variable "${identifier}" create maadu modlu.`);
+    throw new RuntimeException(
+      `Variable "${identifier}" create maadu modlu. ("${identifier}" is not defined)`
+    );
   }
 
   assign(identifier: string, value: unknown) {
@@ -60,14 +36,14 @@ export default class Scope {
     }
 
     throw new RuntimeException(
-      `Variable "${identifier}" create maadu modlu amele upayogisu.`
+      `Variable "${identifier}" create maadu modlu amele upayogisu. ("${identifier}" is not defined, declare it with idu)`
     );
   }
 
   declare(identifier: string, value: unknown) {
     if (this._variables.has(identifier)) {
       throw new RuntimeException(
-        `Variable "${identifier}" avagle create madidiya. Check maadu.`
+        `Variable "${identifier}" avagle create madidiya. Check maadu. ("${identifier}" is already declared)`
       );
     }
 

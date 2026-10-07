@@ -27,6 +27,9 @@ export default abstract class Literal {
       case TokenTypes.khali_TYPE:
         return bhaiLangModule.getNullLiteral();
 
+      case TokenTypes.OPEN_BRACKET_TYPE:
+        return bhaiLangModule.getArrayLiteral();
+
       default:
         throw new UnsupportedTypeException(
           `Token type not supproted for literal: ${tokenType}`

@@ -195,7 +195,7 @@ export const NegativeExpressionsTests = [
     name: "complex assignment expression test with unknown assignment, should throw an exception",
     input: `
         namaskara
-        a *=- 4;
+        a =* 4;
         matte sigona
       `,
     output: SyntaxError,
