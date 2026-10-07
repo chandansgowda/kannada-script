@@ -4,11 +4,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import Logo from "../common/Logo";
-import { GithubIcon, YoutubeIcon } from "../common/icons";
+import { ArrowLeftIcon, GithubIcon, YoutubeIcon } from "../common/icons";
+
+import useActiveSection from "./useActiveSection";
 
 export const GITHUB_URL = "https://github.com/chandansgowda/kannada-script";
 export const YOUTUBE_URL = "https://www.youtube.com/@EngineeringinKannada";
 export const EIK_URL = "https://engineeringinkannada.in";
+export const INSTAGRAM_URL = "https://www.instagram.com/engineering_in_kannada/";
 
 export const NAV_LINKS = [
   { href: "/playground", label: "Playground" },
@@ -25,6 +28,7 @@ type Props = {
 export default function Navbar({ solid = false }: Props) {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
+  const activeSection = useActiveSection(router.pathname === "/");
 
   useEffect(() => {
     if (solid) return;
@@ -49,6 +53,14 @@ export default function Navbar({ solid = false }: Props) {
           solid ? "h-14 max-w-none" : "h-16 max-w-7xl"
         }`}
       >
+        <div className="flex items-center gap-2">
+        {solid && (
+          <Link href="/">
+            <a className="icon-btn -ml-2 md:hidden" aria-label="Back to home" title="Home">
+              <ArrowLeftIcon size={20} />
+            </a>
+          </Link>
+        )}
         <Link href="/">
           <a className="flex items-center gap-3" aria-label="Kannada Script home">
             <Logo size={solid ? 30 : 34} />
@@ -62,13 +74,16 @@ export default function Navbar({ solid = false }: Props) {
             </span>
           </a>
         </Link>
+        </div>
 
         <nav
           className="hidden items-center gap-1 rounded-full border border-white/[0.06] bg-white/[0.03] p-1 md:flex"
           aria-label="Main"
         >
           {NAV_LINKS.map(({ href, label }) => {
-            const active = href === router.pathname;
+            const active =
+              href === router.pathname ||
+              (router.pathname === "/" && activeSection !== "" && href === `/#${activeSection}`);
             return (
               <Link key={href} href={href}>
                 <a

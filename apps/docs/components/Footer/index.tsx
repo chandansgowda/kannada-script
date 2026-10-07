@@ -1,8 +1,8 @@
 import React from "react";
 
 import Logo from "../common/Logo";
-import { GithubIcon, YoutubeIcon } from "../common/icons";
-import { EIK_URL, GITHUB_URL, YOUTUBE_URL } from "../Navbar";
+import { GithubIcon, InstagramIcon, YoutubeIcon } from "../common/icons";
+import { EIK_URL, GITHUB_URL, INSTAGRAM_URL, YOUTUBE_URL } from "../Navbar";
 
 const COLUMNS = [
   {
@@ -28,10 +28,7 @@ const COLUMNS = [
     links: [
       { label: "Website", href: EIK_URL },
       { label: "YouTube", href: YOUTUBE_URL },
-      {
-        label: "Kannada Script videos",
-        href: "https://www.youtube.com/playlist?list=PLlGueSbLhZoBRnTsGiDJeTXuQCALOTN07",
-      },
+      { label: "GitNaadu", href: "https://gitnaadu.engineeringinkannada.in/" },
     ],
   },
 ];
@@ -56,6 +53,9 @@ const Footer = () => (
           </a>
           <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="YouTube">
             <YoutubeIcon size={18} />
+          </a>
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="Instagram">
+            <InstagramIcon size={18} />
           </a>
         </div>
       </div>
@@ -82,7 +82,7 @@ const Footer = () => (
       <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <span>MIT License · Forked from BhaiLang</span>
         <span>
-          Made with 💛❤️ by the{" "}
+          Made with ❤️ by the{" "}
           <a href={EIK_URL} target="_blank" rel="noopener noreferrer" className="text-neutral-300 hover:text-primary">
             Engineering in Kannada
           </a>{" "}

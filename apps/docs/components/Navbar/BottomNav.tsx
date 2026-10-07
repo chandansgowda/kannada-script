@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import Link from "next/link";
 
 import { BookIcon, HomeIcon, KeyboardIcon, PlayIcon, TerminalIcon } from "../common/icons";
+
+import useActiveSection from "./useActiveSection";
 
 const TABS = [
   { href: "/", hash: "", label: "Home", Icon: HomeIcon },
@@ -12,27 +14,9 @@ const TABS = [
   { href: "/#install", hash: "install", label: "Install", Icon: TerminalIcon },
 ];
 
-// sections of the landing page, in order, used to highlight the active tab
-const SECTIONS = ["docs", "keywords", "install"];
-
 /** Mobile navigation for the landing page. */
 export default function BottomNav() {
-  const [active, setActive] = useState("");
-
-  useEffect(() => {
-    const onScroll = () => {
-      let current = "";
-      for (const id of SECTIONS) {
-        const element = document.getElementById(id);
-        if (element && element.getBoundingClientRect().top < window.innerHeight * 0.4)
-          current = id;
-      }
-      setActive(current);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const active = useActiveSection();
 
   return (
     <nav
