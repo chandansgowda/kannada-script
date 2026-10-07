@@ -8,10 +8,10 @@ const COLUMNS = [
   {
     title: "Learn",
     links: [
-      { label: "Playground", href: "#playground" },
-      { label: "Documentation", href: "#docs" },
-      { label: "Keywords", href: "#keywords" },
-      { label: "Run locally", href: "#install" },
+      { label: "Playground", href: "/playground" },
+      { label: "Documentation", href: "/#docs" },
+      { label: "Keywords", href: "/#keywords" },
+      { label: "Install", href: "/#install" },
     ],
   },
   {
@@ -39,9 +39,9 @@ const COLUMNS = [
 const isExternal = (href: string) => href.startsWith("http");
 
 const Footer = () => (
-  <footer className="border-t border-white/[0.06] bg-dark-900">
-    <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_repeat(3,1fr)] lg:px-8">
-      <div>
+  <footer className="border-t border-white/[0.06] bg-dark-900 pb-20 md:pb-0">
+    <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-4 py-12 sm:px-6 sm:py-14 md:grid-cols-[1.4fr_repeat(3,1fr)] lg:px-8">
+      <div className="col-span-2 md:col-span-1">
         <div className="flex items-center gap-3">
           <Logo size={36} />
           <span className="text-lg font-extrabold text-white">Kannada Script</span>

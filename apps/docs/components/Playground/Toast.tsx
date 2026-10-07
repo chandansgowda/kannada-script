@@ -20,7 +20,7 @@ export default function Toast({ toast, onDismiss }: Props) {
     <div
       key={toast.id}
       role="status"
-      className="fixed bottom-5 left-1/2 z-50 flex max-w-[calc(100vw-2rem)] -translate-x-1/2 animate-fade-up items-center gap-3 rounded-2xl border border-white/10 bg-dark-600/95 py-2 pl-4 pr-2 text-sm text-neutral-100 shadow-2xl shadow-black/60 backdrop-blur-xl"
+      className="fixed bottom-24 left-1/2 lg:bottom-6 z-50 flex max-w-[calc(100vw-2rem)] -translate-x-1/2 animate-fade-up items-center gap-3 rounded-2xl border border-white/10 bg-dark-600/95 py-2 pl-4 pr-2 text-sm text-neutral-100 shadow-2xl shadow-black/60 backdrop-blur-xl"
     >
       <span>{toast.message}</span>
       {toast.action && (

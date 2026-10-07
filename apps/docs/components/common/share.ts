@@ -22,7 +22,7 @@ export function getShareUrl(code: string): string {
   const url = new URL(window.location.href);
   url.search = "";
   url.searchParams.set("code", encodeCode(code));
-  url.hash = "playground";
+  url.hash = "";
   return url.toString();
 }
 

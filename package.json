@@ -1,5 +1,5 @@
 {
-  "name": "kannada-script",
+  "name": "kannada-script-monorepo",
   "version": "0.0.2-0",
   "private": true,
   "workspaces": [

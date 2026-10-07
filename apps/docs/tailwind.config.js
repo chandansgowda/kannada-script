@@ -27,9 +27,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "Noto Sans Kannada", ...defaultTheme.fontFamily.sans],
-        kannada: ["Noto Sans Kannada", "Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
-        mono: ["JetBrains Mono", "Noto Sans Kannada", ...defaultTheme.fontFamily.mono],
+        sans: ["Plus Jakarta Sans", "Kannada UI", ...defaultTheme.fontFamily.sans],
+        kannada: ["Kannada UI", "Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
+        mono: ["JetBrains Mono", "Kannada Mono", ...defaultTheme.fontFamily.mono],
       },
       keyframes: {
         "fade-up": {

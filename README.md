@@ -3,7 +3,7 @@
 <p align="center">
   <b>A toy programming language to learn coding in Kannada, written in TypeScript.</b><br>
   Kannadigarinda, Kannadigarigoskara 🔥 (Forked from BhaiLang)<br><br>
-  <a href="https://kannadascript.netlify.app/#playground">Playground</a> ·
+  <a href="https://kannadascript.netlify.app/playground">Playground</a> ·
   <a href="https://kannadascript.netlify.app/#docs">Documentation</a> ·
   <a href="https://www.youtube.com/@EngineeringinKannada">Engineering in Kannada</a>
 </p>
@@ -32,19 +32,30 @@ Every keyword can also be written in Kannada script:
 ಮತ್ತೆ ಸಿಗೋಣ
 ```
 
-<h2 align="center">Try it</h2>
+<h2 align="center">Installation</h2>
 
-The quickest way is the <a href="https://kannadascript.netlify.app/#playground">online playground</a>: examples, sharable links,
+```
+npm i -g kannada-script
+```
+
+<h2 align="center">Usage</h2>
+
+Create a file, for example `hello.kans`, and write your program in it:
+
+```
+namaskara
+  helu "Namaskara Jagattu!";
+matte sigona
+```
+
+Run it:
+
+```
+kannadascript hello.kans
+```
+
+Or skip the install and use the <a href="https://kannadascript.netlify.app/playground">online playground</a>: examples, sharable links,
 input for `kelu()`, a one-click switch between English letters and ಕನ್ನಡ ಲಿಪಿ, and errors that point at the line.
-
-To run `.kans` files on your computer, build the CLI from source:
-
-```
-git clone https://github.com/chandansgowda/kannada-script.git
-cd kannada-script
-npm install && npm run build
-node packages/cli/bin/index.js hello.kans
-```
 
 <h2 align="center">Keywords</h2>
 
@@ -190,13 +201,20 @@ namaskara
 matte sigona
 ```
 
-<h2 align="center">Development</h2>
+## Development
+
+To work on Kannada Script itself, build it from source:
 
 ```
+git clone https://github.com/chandansgowda/kannada-script.git
+cd kannada-script
 npm install
 npm run build   # parser, interpreter, CLI and the playground
 npm run test
-npm run dev     # playground at http://localhost:3000
+npm run dev     # website at http://localhost:3000
+node packages/cli/bin/index.js hello.kans   # run the CLI you built
 ```
+
+The CLI is published from `packages/cli` (`cd packages/cli && npm publish`).
 
 <p align="center">The repo has <code>packages/parser</code> (tokenizer + recursive descent parser producing an AST), <code>packages/interpreter</code> (tree-walking interpreter), <code>packages/cli</code> and <code>apps/docs</code> (the website & playground). You can explore the abstract syntax tree (AST) of kannadascript <a href="https://kannadascript-ast.netlify.app/" target="_blank">here</a>.</p>

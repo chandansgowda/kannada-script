@@ -220,7 +220,7 @@ const CodeEditor = forwardRef<CodeEditorHandle, Props>(function CodeEditor(
   return (
     <div
       ref={scrollRef}
-      className="editor-scroll thin-scrollbar h-[22rem] sm:h-[28rem] lg:h-[34rem]"
+      className="editor-scroll thin-scrollbar min-h-0 flex-1"
       onClick={(e) => {
         // clicking below the last line focuses the editor
         if (e.target === e.currentTarget) getTextarea()?.focus();

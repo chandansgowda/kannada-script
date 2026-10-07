@@ -43,7 +43,7 @@ function Status({ result }: { result: RunResult | null }) {
   return (
     <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-400/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-300 ring-1 ring-inset ring-emerald-400/25">
       <CheckIcon size={12} />
-      Jai Karnataka · {formatDuration(result.durationMs)}
+      {formatDuration(result.durationMs)}
     </span>
   );
 }
@@ -79,12 +79,16 @@ const OutputPanel = forwardRef<HTMLDivElement, Props>(function OutputPanel(
   const inputLineCount = input.split("\n").filter((line) => line !== "").length;
 
   return (
-    <div ref={ref} className="card flex min-w-0 flex-col overflow-hidden">
+    <div ref={ref} className="card flex min-h-0 w-full min-w-0 flex-1 flex-col overflow-hidden">
       <div className="flex items-center justify-between gap-2 border-b border-white/[0.06] px-3 py-2">
+        <span className="flex items-center gap-2 py-1 pl-1 text-sm font-semibold text-neutral-200 lg:hidden">
+          {tab === "output" ? <TerminalIcon size={15} /> : <InputIcon size={15} />}
+          {tab === "output" ? "Output" : "Input"}
+        </span>
         <div
           role="tablist"
           aria-label="Output panels"
-          className="flex items-center gap-1 rounded-full border border-white/[0.06] bg-white/[0.03] p-1"
+          className="hidden items-center gap-1 lg:flex rounded-full border border-white/[0.06] bg-white/[0.03] p-1"
         >
           <TabButton active={tab === "output"} onClick={() => onTabChange("output")}>
             <TerminalIcon size={13} /> Output
@@ -120,7 +124,7 @@ const OutputPanel = forwardRef<HTMLDivElement, Props>(function OutputPanel(
 
       {tab === "output" ? (
         <div
-          className="thin-scrollbar h-[16rem] overflow-auto bg-dark-950/60 p-4 font-mono text-sm leading-relaxed sm:h-[20rem] lg:h-auto lg:flex-1"
+          className="thin-scrollbar min-h-0 flex-1 overflow-auto bg-dark-950/60 p-4 font-mono text-sm leading-relaxed"
           aria-live="polite"
         >
           {!result ? (
@@ -191,7 +195,7 @@ const OutputPanel = forwardRef<HTMLDivElement, Props>(function OutputPanel(
           )}
         </div>
       ) : (
-        <div className="flex h-[16rem] flex-col gap-2 bg-dark-950/60 p-4 sm:h-[20rem] lg:h-auto lg:flex-1">
+        <div className="flex min-h-0 flex-1 flex-col gap-2 bg-dark-950/60 p-4">
           <label htmlFor="programInput" className="text-xs text-neutral-400">
             Prathi line ondu <code className="inline-code">kelu()</code> ge uttara.
             Uttara mugidre browser prompt keLutte.

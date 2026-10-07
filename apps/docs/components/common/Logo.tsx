@@ -1,15 +1,30 @@
 import React from "react";
 
+// "ಕ" from Noto Sans Kannada ExtraBold as a path, so the logo looks the same
+// everywhere (also used in public/favicon.svg)
+const KA_PATH =
+  "M31.79 43Q27.7 43 25.21 42.07Q22.72 41.14 21.61 39.63Q20.5 38.12 20.5 36.36Q20.5 35.34 20.77 34.47Q21.05 33.61 21.67 32.85Q22.28 32.08 23.32 31.44L22.95 32.04L19.57 32.08V27.33H28.63Q29.3 27.05 29.73 26.57Q30.16 26.09 30.16 25.56Q30.16 24.99 29.8 24.47Q29.44 23.94 28.82 23.52L32.76 23.07L35.52 23.52Q35.96 24.07 36.21 24.56Q36.46 25.06 36.46 25.66Q36.46 26.12 36.34 26.55Q36.22 26.99 35.97 27.33H44.3V32.08L40.46 31.98L40.38 31.36Q41.46 31.98 42.15 32.74Q42.84 33.5 43.16 34.38Q43.48 35.27 43.48 36.32Q43.48 38.08 42.38 39.61Q41.28 41.14 38.73 42.07Q36.18 43 31.79 43ZM31.96 37.1Q34.49 37.1 35.5 36.24Q36.52 35.38 36.52 34.23Q36.52 33.37 36.01 32.73Q35.51 32.1 34.51 31.75Q33.51 31.39 31.96 31.39Q30.39 31.39 29.38 31.76Q28.38 32.12 27.92 32.76Q27.46 33.39 27.46 34.21Q27.46 35.49 28.55 36.29Q29.64 37.1 31.96 37.1ZM19.51 24.65V18.74H32.64Q34.72 18.74 35.62 18.59Q36.52 18.44 36.97 18.14Q37.44 17.86 37.61 17.44Q37.78 17.01 37.78 16.39Q37.78 15.33 37.26 14.33Q36.75 13.33 35.69 12.1L40.95 9Q43.05 11.61 43.77 13.58Q44.49 15.54 44.49 17.52Q44.49 18.78 44.09 20.06Q43.68 21.35 42.7 22.32Q41.45 23.56 39.49 24.1Q37.52 24.65 34.22 24.65Z";
+
 /** Kannada Script mark: "ಕ" on the Karnataka flag colours */
 export default function Logo({ size = 36 }: { size?: number }) {
   return (
-    <span
-      className="relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-xl bg-primary font-kannada font-extrabold text-dark shadow-[0_0_0_1px_rgba(255,215,0,0.3),0_8px_24px_-8px_rgba(255,215,0,0.5)]"
-      style={{ width: size, height: size, fontSize: size * 0.5 }}
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 64 64"
       aria-hidden="true"
+      className="shrink-0 rounded-[28%] shadow-[0_0_0_1px_rgba(255,215,0,0.3),0_8px_24px_-8px_rgba(255,215,0,0.5)]"
     >
-      <span className="absolute inset-x-0 bottom-0 h-[22%] bg-kred" />
-      <span className="relative -mt-[12%] leading-none">ಕ</span>
-    </span>
+      <defs>
+        <clipPath id="ks-logo-tile">
+          <rect width="64" height="64" rx="16" />
+        </clipPath>
+      </defs>
+      <g clipPath="url(#ks-logo-tile)">
+        <rect width="64" height="64" fill="#FFD700" />
+        <rect y="50" width="64" height="14" fill="#E8112D" />
+      </g>
+      <path fill="#1A1A1A" d={KA_PATH} />
+    </svg>
   );
 }

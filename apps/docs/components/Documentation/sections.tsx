@@ -293,7 +293,7 @@ matte sigona`,
       <>
         Every keyword can also be written in Kannada script, and variable names can use
         Kannada letters and digits (<C>೦</C>–<C>೯</C>). Mix both as you like. The{" "}
-        <b className="text-neutral-200">A → ಕ</b> button in the playground converts a program
+        <b className="font-kannada text-neutral-200">ಕನ್ನಡ ಲಿಪಿ</b> button in the playground converts a program
         between the two.
       </>
     ),

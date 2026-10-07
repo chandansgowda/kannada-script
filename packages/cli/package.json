@@ -1,7 +1,7 @@
 {
-  "name": "kannadascript",
+  "name": "kannada-script",
   "version": "0.1.0",
-  "description": "CLI for kannada-script",
+  "description": "Kannada Script: a toy programming language to learn coding in Kannada",
   "source": "src/index.ts",
   "main": "bin/index.js",
   "bin": {
@@ -41,10 +41,13 @@
     }
   ],
   "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "bugs": {
     "url": "https://github.com/chandansgowda/kannada-script/issues"
   },
-  "homepage": "https://github.com/chandansgowda/kannada-script#readme",
+  "homepage": "https://kannadascript.netlify.app",
   "devDependencies": {
     "ts-node": "^10.4.0",
     "ts-jest": "^27.1.2",

@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Noto Sans Kannada (SIL Open Font License) with vertical metrics rewritten
+ * to match the Latin font next to it. The stock metrics have a much larger
+ * descent, which made Kannada text sit too high in buttons and stretched
+ * lines that mix English and Kannada.
+ */
+@font-face {
+  font-family: "Kannada UI";
+  src: url("/fonts/noto-sans-kannada-ui.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0951-0952, U+0964-0965, U+0C80-0CF3, U+200C-200D, U+20B9, U+25CC;
+}
+
+/* same font, metrics matching JetBrains Mono so editor lines stay equal height */
+@font-face {
+  font-family: "Kannada Mono";
+  src: url("/fonts/noto-sans-kannada-mono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0951-0952, U+0964-0965, U+0C80-0CF3, U+200C-200D, U+20B9, U+25CC;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
@@ -118,6 +143,12 @@ textarea,
   color: #a3a3a3;
 }
 
+/* full screen height, excluding mobile browser toolbars where supported */
+.app-height {
+  height: 100vh;
+  height: 100dvh;
+}
+
 /* ---------- Playground editor ---------- */
 .editor-scroll {
   @apply relative overflow-auto;
@@ -162,6 +193,13 @@ textarea,
 }
 
 /* scrollbars */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .thin-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
