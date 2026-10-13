@@ -20,7 +20,7 @@ namaskara
   prathi (idu i = 1; i <= 5; i += 1) {
     helu i + "! =", factorial(i);
   }
-matte sigona
+matte sigonna
 ```
 
 Every keyword can also be written in Kannada script:
